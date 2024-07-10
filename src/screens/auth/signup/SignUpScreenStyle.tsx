@@ -15,13 +15,13 @@ export default (theme: ExtendedTheme) => {
       alignItems: "center",
       justifyContent: "center",
     },
-    text:{
-      fontSize: 10
+    text: {
+      fontSize: 10,
     },
     customInput: {
-      backgroundColor: '#f0f0f0',
+      backgroundColor: "#f0f0f0",
       borderWidth: 1,
-      borderColor: '#ddd',
+      borderColor: "#ddd",
       borderRadius: 8,
       padding: 12,
       fontSize: 18,

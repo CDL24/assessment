@@ -18,9 +18,7 @@ const DetailScreen: React.FC<DetailScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <CustomText color={colors.text}>
-        Detail Screen
-      </CustomText>
+      <CustomText color={colors.text}>Detail Screen</CustomText>
       <TouchableOpacity
         style={styles.buttonStyle}
         onPress={() => NavigationService.goBack()}

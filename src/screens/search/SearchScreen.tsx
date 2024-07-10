@@ -11,9 +11,7 @@ const SearchScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <CustomText color={colors.text}>
-        Search
-      </CustomText>
+      <CustomText color={colors.text}>Search</CustomText>
     </View>
   );
 };

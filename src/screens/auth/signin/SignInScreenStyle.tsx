@@ -3,7 +3,7 @@ import { ExtendedTheme } from "@react-navigation/native";
 
 interface Style {
   container: ViewStyle;
-  customInput: ViewStyle | TextStyle
+  customInput: ViewStyle | TextStyle;
 }
 
 export default (theme: ExtendedTheme) => {
@@ -16,9 +16,9 @@ export default (theme: ExtendedTheme) => {
       justifyContent: "center",
     },
     customInput: {
-      backgroundColor: '#f0f0f0',
+      backgroundColor: "#f0f0f0",
       borderWidth: 1,
-      borderColor: '#ddd',
+      borderColor: "#ddd",
       borderRadius: 8,
       padding: 12,
       fontSize: 18,

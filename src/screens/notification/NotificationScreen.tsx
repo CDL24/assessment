@@ -11,9 +11,7 @@ const ProfileScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <CustomText  color={colors.text}>
-        Notification
-      </CustomText>
+      <CustomText color={colors.text}>Notification</CustomText>
     </View>
   );
 };

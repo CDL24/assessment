@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@freakycoder/react-native-helpers": "2.3.0",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-masked-view/masked-view": "^0.3.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",

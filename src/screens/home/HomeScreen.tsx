@@ -29,12 +29,12 @@ const HomeScreen: React.FC = () => {
   /* -------------------------------------------------------------------------- */
 
   const renderMenuButton = () => (
-      <Icon
-        name="menu"
-        type={IconType.Ionicons}
-        color={colors.iconBlack}
-        size={30}
-      />
+    <Icon
+      name="menu"
+      type={IconType.Ionicons}
+      color={colors.iconBlack}
+      size={30}
+    />
   );
 
   const renderHeader = () => (
@@ -61,9 +61,7 @@ const HomeScreen: React.FC = () => {
 
   const renderWelcome = () => (
     <>
-      <CustomText color={colors.text}>
-        Hello Kuray
-      </CustomText>
+      <CustomText color={colors.text}>Hello Kuray</CustomText>
       <CustomText
         fontFamily={fonts.montserrat.lightItalic}
         color={colors.placeholder}

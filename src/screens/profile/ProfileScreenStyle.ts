@@ -14,8 +14,8 @@ export default (theme: ExtendedTheme) => {
       alignItems: "center",
       justifyContent: "center",
     },
-    text:{
-      fontSize: 10
-    }
+    text: {
+      fontSize: 10,
+    },
   });
 };

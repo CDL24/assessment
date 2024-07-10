@@ -25,7 +25,7 @@ export const palette = {
   dynamicBackground: "#fff",
   transparent: "transparent",
   calpyse: "#2b7488",
-  pink: 'pink'
+  pink: "pink",
 };
 
 export const LightTheme: ExtendedTheme = {
@@ -49,6 +49,6 @@ export const DarkTheme: ExtendedTheme = {
     dynamicBackground: palette.dynamicBlack,
     shadow: palette.transparent,
     borderColor: palette.borderColorDark,
-    pink: palette.pink
+    pink: palette.pink,
   },
 };

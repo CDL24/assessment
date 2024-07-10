@@ -28,7 +28,7 @@ const AuthStackNavigator = createStackNavigator();
 const Navigation = () => {
   const scheme = useColorScheme();
   const isDarkMode = scheme === "dark";
-  
+
   React.useEffect((): any => {
     return () => (isReadyRef.current = false);
   }, []);
@@ -68,7 +68,7 @@ const Navigation = () => {
   };
   function AuthStack() {
     return (
-      <AuthStackNavigator.Navigator screenOptions={{headerShown: false}}>
+      <AuthStackNavigator.Navigator screenOptions={{ headerShown: false }}>
         <AuthStackNavigator.Screen name="LogIn" component={SignInScreen} />
         <AuthStackNavigator.Screen name="SignUp" component={SignUpScreen} />
       </AuthStackNavigator.Navigator>
@@ -107,7 +107,7 @@ const Navigation = () => {
       }}
       theme={isDarkMode ? DarkTheme : LightTheme}
     >
-       {false ? HomeStack() : AuthStack()}
+      {false ? HomeStack() : AuthStack()}
       {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={SCREENS.HOME} component={HomeStack} />
         <Stack.Screen name={SCREENS.DETAIL}>

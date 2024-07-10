@@ -4,7 +4,7 @@ import fonts from "@fonts";
 import fontSize from "@font-size";
 
 interface Style {
-    text: TextStyle;
+  text: TextStyle;
 }
 
 export default (theme: ExtendedTheme) => {
@@ -13,7 +13,7 @@ export default (theme: ExtendedTheme) => {
     text: {
       fontSize: fontSize.font16,
       fontFamily: fonts.montserrat.medium, // Default font family
-      color: colors.black
+      color: colors.black,
     },
   });
 };

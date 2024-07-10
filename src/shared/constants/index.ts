@@ -5,5 +5,8 @@ export const SCREENS = {
   NOTIFICATION: "Notification",
   PROFILE: "Profile",
   DETAIL: "Detail",
-  SIGNUP: "SignUp"
+  SIGNUP: "SignUp",
+};
+export const KEYS = {
+  USER: "User",
 };

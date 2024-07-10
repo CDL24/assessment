@@ -11,14 +11,14 @@ export default (theme: ExtendedTheme) => {
   const { colors } = theme;
   return StyleSheet.create<Style>({
     input: {
-      height: 'auto',
-      borderColor: '#ddd',
+      height: "auto",
+      borderColor: "#ddd",
       borderWidth: 1,
       borderRadius: 5,
       paddingHorizontal: 10,
       marginBottom: 10,
       fontSize: fontSize.font16,
-      color: '#333',
+      color: "#333",
     },
   });
 };

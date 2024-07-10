@@ -12,13 +12,8 @@ const ProfileScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <CustomText color={colors.text}>
-        Profile
-      </CustomText>
-      <Button 
-        title="Click"
-        onPress={()=>console.log('clicked')}
-      />
+      <CustomText color={colors.text}>Profile</CustomText>
+      <Button title="Click" onPress={() => console.log("clicked")} />
     </View>
   );
 };

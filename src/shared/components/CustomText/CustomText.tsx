@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { Text, TextProps, TextStyle } from 'react-native';
+import React, { useMemo } from "react";
+import { Text, TextProps, TextStyle } from "react-native";
 import createStyles from "./CustomTextStyle";
 import { useTheme } from "@react-navigation/native";
 
