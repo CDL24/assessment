@@ -10,7 +10,9 @@ export const generateRandomNumber = (min: number, max: number) => {
 
 export const setItem = async (key: string, value: object) => {
   try {
+    console.log("setItem : value ", value);
     const jsonValue = JSON.stringify(value);
+    console.log("setItem : ", jsonValue);
     await AsyncStorage.setItem(key, jsonValue);
   } catch (e: any) {
     // saving error

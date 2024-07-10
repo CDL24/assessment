@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useContext, useMemo, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationService from "react-navigation-helpers";
 import createStyles from "./SignUpScreenStyle";
@@ -8,30 +8,29 @@ import CustomText from "@shared-components/CustomText/CustomText";
 import { View } from "react-native";
 import InputText from "@shared-components/InputText/InputText";
 import Button from "@shared-components/Button/Button";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { setItem } from "utils";
+import { AuthContext } from "context/AuthContext";
 
 const SignUpScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
-
+  const authContext = useContext(AuthContext)
+  console.log('authContext',authContext)
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  const handleEmail = useCallback(() => {
-    (text: string) => {
+  const handleEmail = useCallback((text: string) => {
+      console.log("handleEmail", text);
       setEmail(text);
-    };
   }, []);
-  const handlePassword = useCallback(() => {
-    (text: string) => {
+  const handlePassword = useCallback((text: string) => {
       setPassword(text);
-    };
   }, []);
   const doSignUp = () => {
-    setItem(KEYS.USER, { email, password });
-    console.log("Signup Success....");
+    console.log("Signup Success....", 'email:',email, 'password:',password);
+    //setItem(KEYS.USER, { email: email, password: password });
+    authContext.signIn({ email: email, password: password })
   };
 
   return (
@@ -67,7 +66,7 @@ const SignUpScreen: React.FC = () => {
           inputStyle={styles.customInput}
           secureTextEntry={true}
         />
-        <Button title="Login" onPress={() => doSignUp()} />
+        <Button title="Sign Up" onPress={doSignUp} />
       </View>
     </View>
   );

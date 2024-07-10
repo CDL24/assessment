@@ -23,18 +23,14 @@ const SignInScreen: React.FC = () => {
     const data = getItem(KEYS.USER);
     console.log("data", data);
   }, []);
-  const handleUsername = useCallback(() => {
-    (text: string) => {
+  const handleUsername = useCallback((text: string) => {
       setUserName(text);
-    };
   }, []);
-  const handlePassword = useCallback(() => {
-    (text: string) => {
+  const handlePassword = useCallback((text: string) => {
       setPassword(text);
-    };
   }, []);
   const doLogin = () => {
-    console.log("Login....");
+    console.log("Login....", username, password);
   };
   const goToSignup = () => {
     NavigationService.push(SCREENS.SIGNUP);
@@ -64,15 +60,15 @@ const SignInScreen: React.FC = () => {
           inputStyle={styles.customInput}
           secureTextEntry={true}
         />
-        <Button title="Login" onPress={() => doLogin()} />
-        <TouchableOpacity
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 10,
-          }}
-          onPress={() => goToSignup()}
-        >
+          <Button title="Login" onPress={()=>doLogin()} />
+          <TouchableOpacity
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 10,
+            }}
+            onPress={() => goToSignup()}
+          >
           <CustomText color="blue">SignUp</CustomText>
         </TouchableOpacity>
       </View>

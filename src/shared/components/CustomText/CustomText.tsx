@@ -21,7 +21,7 @@ const CustomText: React.FC<CustomTextProps> = ({
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   const textStyles: TextStyle[] = [styles.text];
-
+  console.log('CustomText')
   if (fontSize) {
     textStyles.push({ fontSize });
   }
@@ -41,4 +41,4 @@ const CustomText: React.FC<CustomTextProps> = ({
   );
 };
 
-export default CustomText;
+export default React.memo(CustomText);

@@ -1,24 +1,24 @@
 import React, { useMemo } from "react";
 import {
   TouchableOpacity,
-  TouchableOpacityProps,
   Text,
   TextStyle,
+  ViewStyle,
 } from "react-native";
 import createStyles from "./ButtonStyle";
 import { useTheme } from "@react-navigation/native";
 
-interface CustomButtonProps extends TouchableOpacityProps {
-  title: string;
-  buttonStyle?: TouchableOpacityProps["style"]; // To override default button style
-  titleStyle?: TextStyle; // To override default title style
-}
-
-const Button: React.FC<CustomButtonProps> = ({
+type ButtonProps = {
+  title: String;
+  onPress?: () => void;
+  titleStyle?: TextStyle;
+  buttonStyle?: ViewStyle
+};
+const Button: React.FC<ButtonProps> = ({
   title,
   buttonStyle,
   titleStyle,
-  ...props
+  onPress
 }) => {
   console.log("buton");
   const theme = useTheme();
@@ -26,10 +26,10 @@ const Button: React.FC<CustomButtonProps> = ({
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   return (
-    <TouchableOpacity style={[styles.button, buttonStyle]} {...props}>
+    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
       <Text style={[styles.title, titleStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };
 
-export default Button;
+export default React.memo(Button);

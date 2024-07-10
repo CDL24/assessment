@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useColorScheme } from "react-native";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { isReadyRef, navigationRef } from "react-navigation-helpers";
@@ -19,6 +19,7 @@ import { SCREENS } from "@shared-constants";
 import { DarkTheme, LightTheme, palette } from "@theme/themes";
 import SignInScreen from "@screens/auth/signin/SignInScreen";
 import SignUpScreen from "@screens/auth/signup/SignUpScreen";
+import { AuthContext } from "context/AuthContext";
 
 // ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
@@ -28,6 +29,8 @@ const AuthStackNavigator = createStackNavigator();
 const Navigation = () => {
   const scheme = useColorScheme();
   const isDarkMode = scheme === "dark";
+  const {authData} = useContext(AuthContext)
+  console.log('authData:',authData)
 
   React.useEffect((): any => {
     return () => (isReadyRef.current = false);
@@ -107,7 +110,7 @@ const Navigation = () => {
       }}
       theme={isDarkMode ? DarkTheme : LightTheme}
     >
-      {false ? HomeStack() : AuthStack()}
+      {authData?.name ? HomeStack() : AuthStack()}
       {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={SCREENS.HOME} component={HomeStack} />
         <Stack.Screen name={SCREENS.DETAIL}>

@@ -6,6 +6,7 @@ export const SCREENS = {
   PROFILE: "Profile",
   DETAIL: "Detail",
   SIGNUP: "SignUp",
+  SIGNIN: "SignIn",
 };
 export const KEYS = {
   USER: "User",

@@ -5,3 +5,8 @@ export interface ICardItem {
   star: number;
   fork: number;
 }
+
+export interface AuthData {
+  email: string;
+  name: string;
+};
