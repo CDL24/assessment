@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationService from "react-navigation-helpers";
 import createStyles from "./SignInScreenStyle";
@@ -9,29 +9,47 @@ import InputText from "@shared-components/InputText/InputText";
 import { View } from "react-native";
 import Button from "@shared-components/Button/Button";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { getItem } from "utils";
+import { AuthContext } from "context/AuthContext";
+import { authenticateUser } from "utils";
 
 const SignInScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
 
-  const [username, setUserName] = useState<string>();
-  const [password, setPassword] = useState<string>();
-
-  useEffect(() => {
-    const data = getItem(KEYS.USER);
-    console.log("data", data);
-  }, []);
+  const [username, setUserName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const {authData, signIn} = useContext(AuthContext)
+  console.log('SignIn...Called',authData)
   const handleUsername = useCallback((text: string) => {
       setUserName(text);
   }, []);
   const handlePassword = useCallback((text: string) => {
       setPassword(text);
   }, []);
-  const doLogin = () => {
-    console.log("Login....", username, password);
+  const doLogin = async () => {
+    const response = await authenticateUser(username, password, authData, signIn)
+    if(response && response.authenticate){
+      console.log("Login....Success", username, password);
+      NavigationService.reset(SCREENS.HOME)
+    }else{
+      console.log("Login....Failed", username, password);
+    }
   };
+  const renderSignUpLink = () =>{
+    return(
+    <TouchableOpacity
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 10,
+          }}
+          onPress={() => goToSignup()}
+        >
+        <CustomText color="blue">SignUp</CustomText>
+      </TouchableOpacity>
+    )
+  }
   const goToSignup = () => {
     NavigationService.push(SCREENS.SIGNUP);
   };
@@ -61,16 +79,7 @@ const SignInScreen: React.FC = () => {
           secureTextEntry={true}
         />
           <Button title="Login" onPress={()=>doLogin()} />
-          <TouchableOpacity
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 10,
-            }}
-            onPress={() => goToSignup()}
-          >
-          <CustomText color="blue">SignUp</CustomText>
-        </TouchableOpacity>
+          { renderSignUpLink()}
       </View>
     </View>
   );

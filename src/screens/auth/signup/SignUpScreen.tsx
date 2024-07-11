@@ -10,27 +10,43 @@ import InputText from "@shared-components/InputText/InputText";
 import Button from "@shared-components/Button/Button";
 import { setItem } from "utils";
 import { AuthContext } from "context/AuthContext";
+import { AuthData } from "@services/models";
 
 const SignUpScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const authContext = useContext(AuthContext)
-  console.log('authContext',authContext)
+  const {signIn} = useContext(AuthContext)
+ 
+  const [name, setName] = useState<string>();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const [confirmPassword, setConfirmPassword] = useState<string>();
 
   const handleEmail = useCallback((text: string) => {
       console.log("handleEmail", text);
       setEmail(text);
   }, []);
+  const handleName = useCallback((text: string) => {
+    console.log("handleEmail", text);
+    setName(text);
+}, []);
   const handlePassword = useCallback((text: string) => {
       setPassword(text);
   }, []);
+  const handleConfirmPassword = useCallback((text: string)=>{
+    setConfirmPassword(text)
+  },[])
   const doSignUp = () => {
-    console.log("Signup Success....", 'email:',email, 'password:',password);
-    //setItem(KEYS.USER, { email: email, password: password });
-    authContext.signIn({ email: email, password: password })
+    console.log("Signup Success....", 'name:'+name, 'email:',email, 'password:',password);
+    
+    const user: AuthData = {
+      name: name,
+      email: email, 
+      password: password,
+      isLoggedIn: true
+    }
+    signIn(user)
   };
 
   return (
@@ -43,6 +59,13 @@ const SignUpScreen: React.FC = () => {
           gap: 10,
         }}
       >
+         <CustomText>Name</CustomText>
+        <InputText
+          value={name}
+          onChangeText={handleName}
+          placeholder="Enter Name"
+          inputStyle={styles.customInput}
+        />
         <CustomText>Email</CustomText>
         <InputText
           value={email}
@@ -60,9 +83,9 @@ const SignUpScreen: React.FC = () => {
         />
         <CustomText>Confirm Password</CustomText>
         <InputText
-          value={password}
-          onChangeText={handlePassword}
-          placeholder="Donfirm password"
+          value={confirmPassword}
+          onChangeText={handleConfirmPassword}
+          placeholder="Confirm password"
           inputStyle={styles.customInput}
           secureTextEntry={true}
         />

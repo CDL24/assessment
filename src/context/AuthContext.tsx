@@ -1,13 +1,14 @@
 import { AuthData } from "@services/models";
 import { KEYS } from "@shared-constants";
 import React, { createContext, useEffect, useState } from "react";
-import { getItem, setItem } from "utils";
+import { getItem, removeItem, setItem } from "utils";
 
 type AuthContextData = {
     authData?: AuthData;
-    signIn(): void;
+    signIn(value: AuthData): void;
     signOut(): void;
     guestSignIn(): Promise<void>;
+    isLoading: boolean
   };
 
 type AuthContextProviderData = {
@@ -16,36 +17,51 @@ type AuthContextProviderData = {
 export const AuthContext = createContext({} as AuthContextData)
 
 export const AuthContextProvider = ({children}:AuthContextProviderData) =>{
-    const [authData, setAuthData] = useState<AuthData>();
+    const [authData, setAuthData] = useState<AuthData | undefined>();
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [isLoading, setLoading] = useState<boolean>(false);
 
+    useEffect(()=>{
+        checkIsLoggedIn()
+    },[])
+
     const guestSignIn = async () => {
-        setAuthData({
-        email: 'guest@gmail.com',
-        name: 'Guest',
-        });
+        // setAuthData({
+        // email: 'guest@gmail.com',
+        // name: 'Guest',
+        // });
     };
     const signIn = async (user: AuthData) => {
         setLoading(true)
         await setItem(KEYS.USER, user)
         setAuthData(user)
+        setIsLoggedIn(true)
         setLoading(false)
-        console.log('SignIn...',user)
     };
-    const isLoggedIn = async () => {
+    const checkIsLoggedIn = async () => {
         setLoading(true)
-        const userData = await getItem(KEYS.USER)
-        setAuthData(userData)
+        const userData: AuthData = await getItem(KEYS.USER)
+        if(Object.keys(userData)?.length > 0){
+            setIsLoggedIn(userData.isLoggedIn)
+            setAuthData(userData)
+        }else{
+            setIsLoggedIn(false)
+            setAuthData(undefined)
+        }
+        console.log('checkIsLoggedIn...',userData)
         setLoading(false)
     };
     const signOut = async () => {
         setLoading(true)
-        setItem(KEYS.USER, {})
+        const user: AuthData = await getItem(KEYS.USER)
+        const updatedData = {...user}
+        updatedData.isLoggedIn = false
+        await setItem(KEYS.USER, updatedData)
+        //removeItem(KEYS.USER)
         setAuthData(undefined)
+        setIsLoggedIn(false)
         setLoading(false)
     };
-    useEffect(()=>{
-        isLoggedIn()
-    },[])
+   
     return <AuthContext.Provider value={{authData, signIn, signOut, guestSignIn, isLoggedIn, isLoading}}>{children}</AuthContext.Provider>
 }

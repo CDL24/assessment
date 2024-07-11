@@ -12,27 +12,14 @@ const ProfileScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const {authData, signOut} = useContext(AuthContext)
-  console.log('profilr',authData)
+  const {signOut} = useContext(AuthContext)
+ 
   return (
     <View style={styles.container}>
       <CustomText color={colors.text}>Profile</CustomText>
       <Button title="Click" onPress={() => {
         signOut()
-        NavigationService.reset(SCREENS.SIGNIN)
-       
-        // navigation.dispatch(
-        //   CommonActions.reset({
-        //     index: 1,
-        //     routes: [
-        //       { name: 'Home' },
-        //       {
-        //         name: 'Profile',
-        //         params: { user: 'jane' },
-        //       },
-        //     ],
-        //   })
-        // );
+        NavigationService.navigate(SCREENS.SIGNIN)
       }} />
     </View>
   );

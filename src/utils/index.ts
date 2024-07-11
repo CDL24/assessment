@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthData } from "@services/models";
 
 export const capitalizeFirstLetter = (str: string) => {
   return str && str.length ? str.charAt(0).toUpperCase() + str.slice(1) : str;
@@ -29,3 +30,23 @@ export const getItem = async (key: string) => {
     console.log("DB Error", e);
   }
 };
+export const removeItem = async (key: string) => {
+  try {
+    await AsyncStorage.removeItem(key)
+  } catch(e) {
+    console.log("DB Error", e);
+  }
+}
+export const authenticateUser = async (userEmail: string, userPassword: string, authData: AuthData | undefined, signIn: (value: AuthData) => void)=>{
+  console.log('authenticateUser.....',authData, userEmail, userPassword)
+  if(authData && userEmail && userPassword){
+    const {email, password} = authData
+    if(email === userEmail && password === userPassword){
+      const updatedData = {...authData}
+      updatedData.isLoggedIn = true
+      signIn(updatedData)
+      return {authenticate: true}
+    }
+  }
+  return {authenticate: false}
+}
