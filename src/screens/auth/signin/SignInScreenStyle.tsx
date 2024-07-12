@@ -3,6 +3,9 @@ import { ExtendedTheme } from "@react-navigation/native";
 import fonts from "@fonts";
 import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
 
+export const ICON_HEIGHT = moderateScale(20)
+export const ICON_WIDTH = moderateScale(20)
+
 interface Style {
   container: ViewStyle;
   customInput: ViewStyle | TextStyle;
@@ -17,6 +20,7 @@ interface Style {
   btnTitleStyle: TextStyle;
   topTitleContainer: ViewStyle;
   imageBg: ImageStyle;
+  imgView: ViewStyle;
 }
 
 export default (theme: ExtendedTheme) => {
@@ -37,10 +41,11 @@ export default (theme: ExtendedTheme) => {
       color: colors.primary, 
       fontSize: moderateScale(16), 
       paddingHorizontal: horizontalScale(8), 
-      fontFamily: fonts.montserrat.regular
+      fontFamily: fonts.poppins.regular
     },
     numberOfKText:{
-      fontFamily: fonts.montserrat.bold
+      fontFamily: fonts.poppins.bold,
+      fontSize: moderateScale(16),
     },
     bottomViewLinear:{
       flex: 1,
@@ -53,7 +58,6 @@ export default (theme: ExtendedTheme) => {
     bottomContainer:{
       justifyContent: "center",
       alignItems: "center",
-      gap: verticalScale(20),
       flex: 1,
       width: "100%",
       paddingTop: verticalScale(250),
@@ -61,18 +65,19 @@ export default (theme: ExtendedTheme) => {
     },
     textTitle:{
       color: colors.secondaryWhite,
-      fontSize: moderateScale(16),
-      fontFamily: 'Montserrat-Black'
+      fontSize: moderateScale(56),
+      fontFamily: fonts.poppins.bold
     },
     textSubTitle:{
       color: colors.secondaryWhite,
-      fontSize: moderateScale(16)
+      fontSize: moderateScale(16),
+      fontFamily: fonts.poppins.regular
     },
     btnContainer:{
       flex: 1,
       gap: verticalScale(16),
       width: "50%",
-      marginTop: verticalScale(10)
+      marginTop: verticalScale(30)
     },
     btnStyle:{
       backgroundColor: colors.secondaryWhite
@@ -86,11 +91,15 @@ export default (theme: ExtendedTheme) => {
       flexDirection: "row",
       position: "absolute",
       alignSelf: "center",
-      alignItems: "center"
+      alignItems: "center",
     },
     imageBg:{
       height: "100%", 
       width: "100%"
+    },
+    imgView:{
+      alignContent: 'center', 
+      bottom: verticalScale(2)
     }
   });
 };

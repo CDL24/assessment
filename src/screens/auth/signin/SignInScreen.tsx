@@ -5,7 +5,7 @@ import React, {
   useState,
 } from "react";
 import * as NavigationService from "react-navigation-helpers";
-import createStyles from "./SignInScreenStyle";
+import createStyles, { ICON_HEIGHT, ICON_WIDTH } from "./SignInScreenStyle";
 import {
   useTheme,
 } from "@react-navigation/native";
@@ -52,7 +52,7 @@ const SignInScreen: React.FC = () => {
   const topTitleView = () => {
     return (
       <View style={styles.topTitleContainer}>
-        <STAR height={16} width={16} />
+        <View style={styles.imgView}><STAR height={ICON_HEIGHT} width={ICON_WIDTH}/></View>
         <Text style={styles.topText}>
           <Text style={styles.numberOfKText}>{translations.numberOf}</Text> {translations.premiumRecipe}
         </Text>

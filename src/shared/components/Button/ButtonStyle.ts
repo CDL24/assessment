@@ -1,5 +1,7 @@
 import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { ExtendedTheme } from "@react-navigation/native";
+import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
+import fonts from "@fonts";
 
 interface Style {
   button: ViewStyle;
@@ -11,17 +13,20 @@ export default (theme: ExtendedTheme) => {
   return StyleSheet.create<Style>({
     button: {
       backgroundColor: colors.primary,
-      paddingVertical: 16,
-      paddingHorizontal: 20,
+      paddingVertical: verticalScale(14),
+      paddingHorizontal: horizontalScale(20),
       borderRadius: 8,
       alignItems: "center",
+      borderColor: colors.primary,
+      borderWidth:1
     },
     title: {
-      fontSize: 16,
+      fontSize: moderateScale(16),
       color: colors.white,
-      fontWeight: "bold",
+      fontWeight: "600",
       justifyContent: "center",
       alignItems: "center",
+      fontFamily: fonts.poppins.bold
     },
   });
 };
