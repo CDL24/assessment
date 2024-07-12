@@ -49,6 +49,11 @@ export const translations = new LocalizedStrings({
     searchRecipes: 'Search recipes',
     invalidDataTitle: 'Invalid Data',
     invalidDataMessage: 'Please enter valid data',
+    errorFiledRequired: "Filed is required",
+    errorInvalidEmail: "Enter valid email",
+    tooShort: "Too short !",
+    tooLong: "Too long !",
+    missmatchPassword: 'Password miss match'
   },
 });
 

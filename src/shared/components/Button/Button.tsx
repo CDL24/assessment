@@ -8,12 +8,14 @@ type ButtonProps = {
   onPress?: () => void;
   titleStyle?: TextStyle;
   buttonStyle?: ViewStyle;
+  disabled?: boolean
 };
 const Button: React.FC<ButtonProps> = ({
   title,
   buttonStyle,
   titleStyle,
   onPress,
+  disabled = false
 }) => {
   console.log("buton");
   const theme = useTheme();
@@ -21,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   return (
-    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
+    <TouchableOpacity disabled={disabled} style={[styles.button, buttonStyle]} onPress={onPress}>
       <Text style={[styles.title, titleStyle]}>{title}</Text>
     </TouchableOpacity>
   );

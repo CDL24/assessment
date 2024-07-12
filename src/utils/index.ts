@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AuthData } from "@services/models";
+import { AuthData, UserObj } from "@services/models";
 
 export const capitalizeFirstLetter = (str: string) => {
   return str && str.length ? str.charAt(0).toUpperCase() + str.slice(1) : str;
@@ -51,4 +51,20 @@ export const authenticateUser = async (
     }
   }
   return { authenticate: false };
+};
+/**
+ * 
+ * @param values object of userInput data
+ * @param signIn function which store user in DB
+ */
+export const doSignUp = (values: UserObj, signIn: (value: AuthData) => void) => {
+  const {firstName, lastName, email, password} = values;
+  const user: AuthData = {
+    name: firstName+' '+lastName,
+    email: email,
+    password: password,
+    isLoggedIn: true,
+    isGuestLoggedIn: false,
+  };
+ signIn(user);
 };

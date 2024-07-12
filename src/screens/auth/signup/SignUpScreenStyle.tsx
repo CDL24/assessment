@@ -11,6 +11,7 @@ interface Style {
   subContainer: ViewStyle;
   label: TextStyle;
   btnStyle: ViewStyle;
+  btnDisableStyle: ViewStyle;
   error: TextStyle;
 }
 
@@ -45,17 +46,22 @@ export default (theme: ExtendedTheme) => {
       flex: 1,
       marginTop: verticalScale(100),
       left: verticalScale(25),
-      gap: verticalScale(5),
+      //gap: verticalScale(5),
       position: "absolute",
       width: "85%"
     },
     label:{
       color: colors.secondaryWhite,
       fontSize: fontSize.font18,
-      fontWeight: '600'
+      fontWeight: '600',
+      marginBottom: verticalScale(5)
     },
     btnStyle:{
       marginTop: verticalScale(16)
+    },
+    btnDisableStyle:{
+      marginTop: verticalScale(16),
+      backgroundColor: '#A5C9CA'
     },
     error:{
       color: colors.error,

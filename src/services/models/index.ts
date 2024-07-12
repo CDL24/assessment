@@ -13,3 +13,10 @@ export interface AuthData {
   isLoggedIn: boolean;
   isGuestLoggedIn: boolean;
 }
+export interface UserObj {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
