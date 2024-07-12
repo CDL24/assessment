@@ -2,11 +2,10 @@
  * ? Local Imports
  */
 import React, { useMemo } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import * as NavigationService from "react-navigation-helpers";
 import createStyles from "./DetailScreen.style";
 import { useTheme } from "@react-navigation/native";
-import CustomText from "@shared-components/CustomText/CustomText";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface DetailScreenProps {}
@@ -18,12 +17,12 @@ const DetailScreen: React.FC<DetailScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <CustomText color={colors.text}>Detail Screen</CustomText>
+      <Text style={{color: colors.text}}>Detail Screen</Text>
       <TouchableOpacity
         style={styles.buttonStyle}
         onPress={() => NavigationService.goBack()}
       >
-        <CustomText color={colors.white}>Go back to Home</CustomText>
+        <Text style={{color: colors.white}}>Go back to Home</Text>
       </TouchableOpacity>
     </View>
   );

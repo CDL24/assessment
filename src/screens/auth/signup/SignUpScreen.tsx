@@ -1,19 +1,14 @@
 import React, { useCallback, useContext, useMemo, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import * as NavigationService from "react-navigation-helpers";
 import createStyles from "./SignUpScreenStyle";
 import { useTheme } from "@react-navigation/native";
-import { KEYS, SCREENS } from "@shared-constants";
-import CustomText from "@shared-components/CustomText/CustomText";
-import { Image, View } from "react-native";
+import { Image, KeyboardAvoidingView, Platform, Text, View } from "react-native";
 import InputText from "@shared-components/InputText/InputText";
 import Button from "@shared-components/Button/Button";
-import { setItem } from "utils";
 import { AuthContext } from "context/AuthContext";
 import { AuthData } from "@services/models";
 import { LOGIN_BACKGROUND } from "assets/constant";
-import { verticalScale } from "@theme/metrix";
 import LinearGradient from "react-native-linear-gradient";
+import { translations } from "shared/localization";
 
 const SignUpScreen: React.FC = () => {
   const theme = useTheme();
@@ -21,18 +16,22 @@ const SignUpScreen: React.FC = () => {
   const styles = useMemo(() => createStyles(theme), [theme]);
   const { signIn } = useContext(AuthContext);
 
-  const [name, setName] = useState<string>();
+  const [errorMsg, setErrorMsg] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>();
+  const [lastName, setLastName] = useState<string>();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [confirmPassword, setConfirmPassword] = useState<string>();
 
   const handleEmail = useCallback((text: string) => {
-    console.log("handleEmail", text);
     setEmail(text);
   }, []);
-  const handleName = useCallback((text: string) => {
-    console.log("handleEmail", text);
-    setName(text);
+  const handleFirstName = useCallback((e: any) => {
+    console.log(e)
+    //setFirstName(text);
+  }, []);
+  const handleLastName = useCallback((text: string) => {
+    setLastName(text);
   }, []);
   const handlePassword = useCallback((text: string) => {
     setPassword(text);
@@ -41,17 +40,11 @@ const SignUpScreen: React.FC = () => {
     setConfirmPassword(text);
   }, []);
   const doSignUp = () => {
-    console.log(
-      "Signup Success....",
-      "name:" + name,
-      "email:",
-      email,
-      "password:",
-      password,
-    );
+    //if(!firstName) setErrorMsg('Input field required!') 
+    //if(!firstName) setErrorMsg('Input field required!') 
 
     const user: AuthData = {
-      name: name,
+      name: firstName+' '+lastName,
       email: email,
       password: password,
       isLoggedIn: true,
@@ -61,72 +54,66 @@ const SignUpScreen: React.FC = () => {
   };
   const renderUI = () => {
     return (
-      <View
-        style={{
-          flex: 1,
-          marginTop: verticalScale(150),
-          left: verticalScale(25),
-          gap: verticalScale(10),
-          position: "absolute",
-          width: "85%",
-        }}
-      >
-        <CustomText color={colors.secondaryWhite}>Name</CustomText>
+      <View style={styles.subContainer}>
+        <Text style={styles.label}>{translations.firstName}</Text>
         <InputText
-          value={name}
-          onChangeText={handleName}
-          placeholder="Enter Name"
+          value={firstName}
+          onChangeText={handleFirstName}
+          placeholder={translations.firstNamePlaceHolder}
           inputStyle={styles.customInput}
         />
-        <CustomText color={colors.secondaryWhite}>Email</CustomText>
+        <Text style={styles.label}>{translations.lastName}</Text>
+        <InputText
+          value={lastName}
+          onChangeText={handleLastName}
+          placeholder={translations.lastNamePlaceHolder}
+          inputStyle={styles.customInput}
+        />
+        <Text style={styles.label}>{translations.email}</Text>
         <InputText
           value={email}
           onChangeText={handleEmail}
-          placeholder="Enter email"
+          placeholder={translations.emailPlaceHolder}
           inputStyle={styles.customInput}
         />
-        <CustomText color={colors.secondaryWhite}>Password</CustomText>
+        <Text style={styles.label}>{translations.passwordTitle}</Text>
         <InputText
           value={password}
           onChangeText={handlePassword}
-          placeholder="Enter password"
+          placeholder={translations.passwordPlaceHolder}
           inputStyle={styles.customInput}
           secureTextEntry={true}
         />
-        <CustomText color={colors.secondaryWhite}>Confirm Password</CustomText>
+        <Text style={styles.label}>{translations.confirmPasswordTitle}</Text>
         <InputText
           value={confirmPassword}
           onChangeText={handleConfirmPassword}
-          placeholder="Confirm password"
+          placeholder={translations.confirmPasswordPlaceHolder}
           inputStyle={styles.customInput}
           secureTextEntry={true}
         />
         <Button
-          buttonStyle={{ marginTop: verticalScale(16) }}
-          title="Sign Up"
+          buttonStyle={styles.btnStyle}
+          title={translations.signUp}
           onPress={doSignUp}
         />
       </View>
+      
     );
   };
   return (
-    <View style={{ flex: 1 }}>
+    <KeyboardAvoidingView style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <Image
-        style={{ height: "100%", width: "100%" }}
+        style={styles.imageBg}
         source={LOGIN_BACKGROUND}
       />
       <LinearGradient
-        colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.9)"]}
-        style={{
-          flex: 1,
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-        }}
-      >
+        colors={[colors.startBlack, colors.endBlack]}
+        style={styles.bottomViewLinear}>
         {renderUI()}
       </LinearGradient>
-    </View>
+      </KeyboardAvoidingView>
   );
 };
 

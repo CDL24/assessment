@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { FlatList, Image, View } from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationService from "react-navigation-helpers";
@@ -9,7 +9,6 @@ import MockData from "./mock/MockData";
 import fonts from "@fonts";
 import { useTheme } from "@react-navigation/native";
 import { SCREENS } from "@shared-constants";
-import CustomText from "@shared-components/CustomText/CustomText";
 
 const profileURI =
   // eslint-disable-next-line max-len
@@ -61,13 +60,10 @@ const HomeScreen: React.FC = () => {
 
   const renderWelcome = () => (
     <>
-      <CustomText color={colors.text}>Hello Kuray</CustomText>
-      <CustomText
-        fontFamily={fonts.montserrat.lightItalic}
-        color={colors.placeholder}
-      >
+      <Text style={{color: colors.text}}>Hello Kuray</Text>
+      <Text style={{color: colors.placeholder, fontFamily: fonts.montserrat.lightItalic}}>
         Welcome Back
-      </CustomText>
+      </Text>
     </>
   );
 

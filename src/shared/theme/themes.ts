@@ -33,6 +33,9 @@ export const palette = {
   secondaryGrey: "#D9D9D9",
   lightGrey: "#A9A9A9",
   orange: "#FFB661",
+  startBlack: "rgba(0,0,0,0)", 
+  endBlack: "rgba(0,0,0,0.9)",
+  error: '#FF0000'
 };
 
 export const LightTheme: ExtendedTheme = {
@@ -56,5 +59,8 @@ export const DarkTheme: ExtendedTheme = {
     dynamicBackground: palette.dynamicBlack,
     shadow: palette.transparent,
     borderColor: palette.borderColorDark,
+    startBlack:  palette.startBlack, 
+    endBlack: palette.endBlack,
+    error: palette.error
   },
 };

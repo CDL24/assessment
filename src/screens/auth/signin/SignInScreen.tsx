@@ -1,37 +1,29 @@
 import React, {
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationService from "react-navigation-helpers";
 import createStyles from "./SignInScreenStyle";
 import {
-  CommonActions,
-  useNavigation,
   useTheme,
 } from "@react-navigation/native";
-import { KEYS, SCREENS } from "@shared-constants";
-import CustomText from "@shared-components/CustomText/CustomText";
-import InputText from "@shared-components/InputText/InputText";
-import { Image, View } from "react-native";
+import { SCREENS } from "@shared-constants";
+import { Image, Text, View } from "react-native";
 import Button from "@shared-components/Button/Button";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthContext } from "context/AuthContext";
-import { authenticateUser } from "utils";
 import { LOGIN_BACKGROUND } from "assets/constant";
+import STAR from "@assets/images/star.svg";
+
 import LinearGradient from "react-native-linear-gradient";
-import fontSize from "@font-size";
-import { moderateScale, verticalScale } from "@theme/metrix";
-import { AuthData, AuthGuest } from "@services/models";
+import { translations } from "shared/localization";
+
 
 const SignInScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const navigation = useNavigation();
 
   const [username, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -59,74 +51,28 @@ const SignInScreen: React.FC = () => {
   };
   const topTitleView = () => {
     return (
-      <View
-        style={{
-          flex: 1,
-          marginTop: verticalScale(50),
-          flexDirection: "row",
-          position: "absolute",
-          alignSelf: "center",
-          alignItems: "center",
-        }}
-      >
-        <CustomText
-          color={colors.primary}
-          fontSize={moderateScale(fontSize.font16)}
-        >
-          60k+ Premium recipies
-        </CustomText>
+      <View style={styles.topTitleContainer}>
+        <STAR height={16} width={16} />
+        <Text style={styles.topText}>
+          <Text style={styles.numberOfKText}>{translations.numberOf}</Text> {translations.premiumRecipe}
+        </Text>
       </View>
     );
   };
   const bottomView = (): React.ReactElement => {
     return (
       <LinearGradient
-        colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.9)"]}
-        style={{
-          flex: 1,
-          bottom: 0,
-          width: "100%",
-          position: "absolute",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            gap: verticalScale(20),
-            flex: 1,
-            width: "100%",
-            paddingTop: verticalScale(250),
-            paddingBottom: verticalScale(50),
-          }}
-        >
-          <CustomText
-            color={colors.secondaryWhite}
-            fontSize={moderateScale(fontSize.font32)}
-          >
-            Yumm
-          </CustomText>
-          <CustomText
-            color={colors.secondaryWhite}
-            fontSize={moderateScale(fontSize.font16)}
-          >
-            Find the best recipes for coocking
-          </CustomText>
-          <View
-            style={{
-              flex: 1,
-              gap: verticalScale(16),
-              width: "50%",
-              marginTop: verticalScale(10),
-            }}
-          >
-            <Button title="Sign up" onPress={() => goToSignUp()} />
+        colors={[colors.startBlack, colors.endBlack]}
+        style={styles.bottomViewLinear}>
+        <View style={styles.bottomContainer}>
+          <Text style={styles.textTitle}> {translations.yummTitle}</Text>
+          <Text style={styles.textSubTitle}>{translations.findRecipe}</Text>
+          <View style={styles.btnContainer}>
+            <Button title={translations.signUp} onPress={() => goToSignUp()} />
             <Button
-              buttonStyle={{ backgroundColor: colors.secondaryWhite }}
-              titleStyle={{ color: colors.primary }}
-              title="Start coocking"
+              buttonStyle={styles.btnStyle}
+              titleStyle={styles.btnTitleStyle}
+              title={translations.startCooking}
               onPress={() => onStartCooking()}
             />
           </View>
@@ -135,9 +81,9 @@ const SignInScreen: React.FC = () => {
     );
   };
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <Image
-        style={{ height: "100%", width: "100%" }}
+        style={styles.imageBg}
         source={LOGIN_BACKGROUND}
       />
 

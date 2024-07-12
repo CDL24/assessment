@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import createStyles from "./SearchScreen.style";
 import { useTheme } from "@react-navigation/native";
-import CustomText from "@shared-components/CustomText/CustomText";
 
 const SearchScreen: React.FC = () => {
   const theme = useTheme();
@@ -11,7 +10,7 @@ const SearchScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <CustomText color={colors.text}>Search</CustomText>
+      <Text style={{color: colors.text}}>Search</Text>
     </View>
   );
 };

@@ -1,5 +1,19 @@
 export default {
   montserrat: {
+    // bold: {
+    //   fontFamily: 'Poppins-Bold',
+    //   fontWeight: '600',
+    // },
+    // regular: {
+    //   fontFamily: 'Poppins-Regular',
+    //   fontWeight: '400',
+    // },
+    // semiBold: {
+    //   fontFamily: 'Poppins-SemiBold',
+    // },
+    // light: {
+    //   fontFamily: 'Poppins-Light',
+    // }
     black: "Montserrat-Black",
     blackItalic: "Montserrat-BlackItalic",
     bold: "Montserrat-Bold",

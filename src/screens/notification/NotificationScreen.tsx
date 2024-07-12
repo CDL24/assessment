@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import createStyles from "./NotificationScreen.style";
 import { useTheme } from "@react-navigation/native";
-import CustomText from "@shared-components/CustomText/CustomText";
 
 const ProfileScreen: React.FC = () => {
   const theme = useTheme();
@@ -11,7 +10,7 @@ const ProfileScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <CustomText color={colors.text}>Notification</CustomText>
+      <Text style={{color: colors.text}}>Notification</Text>
     </View>
   );
 };
