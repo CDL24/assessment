@@ -9,5 +9,5 @@ export const SCREENS = {
   SIGNIN: "SignIn",
 };
 export const KEYS = {
-  USER: "@User"
+  USER: "@User",
 };

@@ -12,15 +12,18 @@ const ProfileScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const {signOut} = useContext(AuthContext)
- 
+  const { signOut } = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
       <CustomText color={colors.text}>Profile</CustomText>
-      <Button title="Click" onPress={() => {
-        signOut()
-        NavigationService.navigate(SCREENS.SIGNIN)
-      }} />
+      <Button
+        title="Click"
+        onPress={() => {
+          signOut();
+          NavigationService.navigate(SCREENS.SIGNIN);
+        }}
+      />
     </View>
   );
 };

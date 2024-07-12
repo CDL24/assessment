@@ -8,7 +8,8 @@ export interface ICardItem {
 
 export interface AuthData {
   name?: string | undefined;
-  email: string | undefined;
-  password: string | undefined;
+  email?: string | undefined;
+  password?: string | undefined;
   isLoggedIn: boolean;
-};
+  isGuestLoggedIn: boolean;
+}

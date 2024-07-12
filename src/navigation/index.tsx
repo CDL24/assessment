@@ -29,8 +29,8 @@ const AuthStackNavigator = createStackNavigator();
 const Navigation = () => {
   const scheme = useColorScheme();
   const isDarkMode = scheme === "dark";
-  const {authData} = useContext(AuthContext)
-  console.log('authData:',authData, 'isLoggedIn:',authData?.isLoggedIn)
+  const { authData } = useContext(AuthContext);
+  console.log("authData:", authData, "isLoggedIn:", authData?.isLoggedIn);
 
   React.useEffect((): any => {
     return () => (isReadyRef.current = false);
@@ -101,7 +101,7 @@ const Navigation = () => {
       </Tab.Navigator>
     );
   };
-  console.log('Navigator...Called....', authData, authData?.isLoggedIn)
+  console.log("Navigator...Called....", authData, authData?.isLoggedIn);
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -110,7 +110,9 @@ const Navigation = () => {
       }}
       theme={isDarkMode ? DarkTheme : LightTheme}
     >
-      {authData?.isLoggedIn ? HomeStack() : AuthStack()}
+      {authData?.isLoggedIn || authData?.isGuestLoggedIn
+        ? HomeStack()
+        : AuthStack()}
       {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={SCREENS.HOME} component={HomeStack} />
         <Stack.Screen name={SCREENS.DETAIL}>

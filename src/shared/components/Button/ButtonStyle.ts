@@ -13,7 +13,7 @@ export default (theme: ExtendedTheme) => {
       backgroundColor: colors.primary,
       paddingVertical: 16,
       paddingHorizontal: 20,
-      borderRadius: 5,
+      borderRadius: 8,
       alignItems: "center",
     },
     title: {

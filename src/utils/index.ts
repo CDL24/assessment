@@ -32,21 +32,27 @@ export const getItem = async (key: string) => {
 };
 export const removeItem = async (key: string) => {
   try {
-    await AsyncStorage.removeItem(key)
-  } catch(e) {
+    await AsyncStorage.removeItem(key);
+  } catch (e) {
     console.log("DB Error", e);
   }
-}
-export const authenticateUser = async (userEmail: string, userPassword: string, authData: AuthData | undefined, signIn: (value: AuthData) => void)=>{
-  console.log('authenticateUser.....',authData, userEmail, userPassword)
-  if(authData && userEmail && userPassword){
-    const {email, password} = authData
-    if(email === userEmail && password === userPassword){
-      const updatedData = {...authData}
-      updatedData.isLoggedIn = true
-      signIn(updatedData)
-      return {authenticate: true}
+};
+export const authenticateUser = async (
+  userEmail: string,
+  userPassword: string,
+  authData: AuthData | undefined,
+  signIn: (value: AuthData) => void,
+) => {
+  console.log("authenticateUser.....", authData, userEmail, userPassword);
+  if (authData && userEmail && userPassword) {
+    const { email, password } = authData;
+    if (email === userEmail && password === userPassword) {
+      const updatedData = { ...authData };
+      updatedData.isLoggedIn = true;
+      updatedData.isGuestLoggedIn = false;
+      signIn(updatedData);
+      return { authenticate: true };
     }
   }
-  return {authenticate: false}
-}
+  return { authenticate: false };
+};

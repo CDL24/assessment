@@ -2,8 +2,8 @@ import type { ExtendedTheme } from "@react-navigation/native";
 import { DefaultTheme } from "@react-navigation/native";
 
 export const palette = {
-  primary: "#0564d4",
-  secondary: "#ff6a00",
+  primary: "#33CDD7",
+  secondary: "#00C1CD",
   background: "#f6f8fa",
   white: "#fff",
   black: "#101214",
@@ -25,7 +25,14 @@ export const palette = {
   dynamicBackground: "#fff",
   transparent: "transparent",
   calpyse: "#2b7488",
-  pink: "pink",
+  secondaryWhite: "#f1f1f1",
+  secondaryBlack: "#130F26",
+  neutralBlack: "#181818",
+  grey: "#303030",
+  grey4D: "#3030304D",
+  secondaryGrey: "#D9D9D9",
+  lightGrey: "#A9A9A9",
+  orange: "#FFB661",
 };
 
 export const LightTheme: ExtendedTheme = {
@@ -49,6 +56,5 @@ export const DarkTheme: ExtendedTheme = {
     dynamicBackground: palette.dynamicBlack,
     shadow: palette.transparent,
     borderColor: palette.borderColorDark,
-    pink: palette.pink,
   },
 };

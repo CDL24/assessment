@@ -1,10 +1,5 @@
 import React, { useMemo } from "react";
-import {
-  TouchableOpacity,
-  Text,
-  TextStyle,
-  ViewStyle,
-} from "react-native";
+import { TouchableOpacity, Text, TextStyle, ViewStyle } from "react-native";
 import createStyles from "./ButtonStyle";
 import { useTheme } from "@react-navigation/native";
 
@@ -12,13 +7,13 @@ type ButtonProps = {
   title: String;
   onPress?: () => void;
   titleStyle?: TextStyle;
-  buttonStyle?: ViewStyle
+  buttonStyle?: ViewStyle;
 };
 const Button: React.FC<ButtonProps> = ({
   title,
   buttonStyle,
   titleStyle,
-  onPress
+  onPress,
 }) => {
   console.log("buton");
   const theme = useTheme();

@@ -15,7 +15,6 @@ LogBox.ignoreAllLogs();
 const App = () => {
   const scheme = useColorScheme();
   const isDarkMode = scheme === "dark";
-  
 
   React.useEffect(() => {
     StatusBar.setBarStyle(isDarkMode ? "light-content" : "dark-content");
@@ -23,7 +22,6 @@ const App = () => {
       StatusBar.setBackgroundColor("rgba(0,0,0,0)");
       StatusBar.setTranslucent(true);
     }
-
 
     setTimeout(() => {
       SplashScreen.hide();
