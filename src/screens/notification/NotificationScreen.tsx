@@ -1,18 +1,24 @@
 import React, { useMemo } from "react";
-import { Text, View } from "react-native";
-import createStyles from "./NotificationScreen.style";
+import { View } from "react-native";
+import createStyles from "./NotificationScreenStyle";
 import { useTheme } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import HeaderTitle from "@shared-components/HeaderTitle/HeaderTitle";
+import { translations } from "shared/localization";
+import NotificationItem from "./components/NotificationItems/NotificationItem";
 
-const ProfileScreen: React.FC = () => {
+const Notifications: React.FC = () => {
   const theme = useTheme();
-  const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   return (
-    <View style={styles.container}>
-      <Text style={{color: colors.text}}>Notification</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.subContainer}>
+          <HeaderTitle title={translations.notifications}/>
+          <NotificationItem />
+      </View>
+    </SafeAreaView>
   );
 };
 
-export default ProfileScreen;
+export default Notifications;

@@ -57,6 +57,9 @@ export const translations = new LocalizedStrings({
     welcomeMsg: "Good afternoon, {0}!",
     name: "By Niki Samantha" ,
     loading: "Loading...",
-    savedRecipe: "Saved recipes"
+    savedRecipe: "Saved recipes",
+    notifications: "Notifications",
+    today: "Today",
+    allSet: 'You’re all set!'
   },
 });
