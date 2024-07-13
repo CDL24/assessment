@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthData, UserObj } from "@services/models";
+import { translations } from "shared/localization";
 
 export const capitalizeFirstLetter = (str: string) => {
   return str && str.length ? str.charAt(0).toUpperCase() + str.slice(1) : str;
@@ -68,3 +69,10 @@ export const doSignUp = (values: UserObj, signIn: (value: AuthData) => void) => 
   };
  signIn(user);
 };
+
+export const getProfileName = (authData: AuthData | undefined) : string =>{
+  let welcomeString = ''
+  if(authData && authData.isGuestLoggedIn) welcomeString = translations.formatString(translations.welcomeMsg, 'Guest').toString()
+  if(authData && !authData.isGuestLoggedIn && authData.isLoggedIn && authData.name) welcomeString = translations.formatString(translations.welcomeMsg, authData.name).toString()
+  return welcomeString
+}

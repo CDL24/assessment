@@ -28,7 +28,7 @@ export const translations = new LocalizedStrings({
     recentDefaultTitle: 'Indonesian chicken burger',
     recentDefaultDescription: 'By James Wolden',
     popularDefaultTitle: 'Indonesian chicken burger',
-    recentTitle: 'Recent Recipe',
+    recentTitle: 'Recent recipe',
     popularTitle: 'Popular Creator',
     seeAll: 'See all',
     firstName: 'First name',
@@ -53,7 +53,9 @@ export const translations = new LocalizedStrings({
     errorInvalidEmail: "Enter valid email",
     tooShort: "Too short !",
     tooLong: "Too long !",
-    missmatchPassword: 'Password miss match'
+    missmatchPassword: 'Password miss match',
+    welcomeMsg: "Good afternoon, {0}!",
+    name: "By Niki Samantha" 
   },
 });
 
