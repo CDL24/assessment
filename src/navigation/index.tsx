@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import { useColorScheme } from "react-native";
-import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { isReadyRef, navigationRef } from "react-navigation-helpers";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import DetailScreen from "@screens/detail/DetailScreen";
-// ? Screens
+
 import HomeScreen from "@screens/home/HomeScreen";
 import NotificationScreen from "@screens/notification/NotificationScreen";
 import ProfileScreen from "@screens/profile/ProfileScreen";
@@ -20,6 +18,14 @@ import { DarkTheme, LightTheme, palette } from "@theme/themes";
 import SignInScreen from "@screens/auth/signin/SignInScreen";
 import SignUpScreen from "@screens/auth/signup/SignUpScreen";
 import { AuthContext } from "context/AuthContext";
+import HOME_ACTIVE from "assets/images/home_active.svg";
+import HOME_INACTIVE from "assets/images/home_inactive.svg";
+import BOOKMARK_ACTIVE from "assets/images/bookmark_active.svg";
+import BOOKMARK_INACTIVE from "assets/images/bookmark_inactive.svg";
+import NOTIFICATION_ACTIVE from "assets/images/notification_active.svg";
+import NOTIFICATION_INACTIVE from "assets/images/notification_inactive.svg";
+import PROFILE_ACTIVE from "assets/images/profile_active.svg";
+import PROFILE_INACTIVE from "assets/images/profile_inactive.svg";
 
 // ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
@@ -38,36 +44,20 @@ const Navigation = () => {
 
   const renderTabIcon = (
     route: any,
-    focused: boolean,
-    color: string,
-    size: number,
+    focused: boolean
   ) => {
-    let iconName = "home";
     switch (route.name) {
       case SCREENS.HOME:
-        iconName = focused ? "home" : "home-outline";
-        break;
+        return focused ? <HOME_ACTIVE /> : <HOME_INACTIVE />
       case SCREENS.SEARCH:
-        iconName = focused ? "search" : "search-outline";
-        break;
+        return focused ? <BOOKMARK_ACTIVE /> : <BOOKMARK_INACTIVE />
       case SCREENS.NOTIFICATION:
-        iconName = focused ? "notifications" : "notifications-outline";
-        break;
+        return focused ? <NOTIFICATION_ACTIVE /> : <NOTIFICATION_INACTIVE />
       case SCREENS.PROFILE:
-        iconName = focused ? "person" : "person-outline";
-        break;
+        return focused ? <PROFILE_ACTIVE /> : <PROFILE_INACTIVE />
       default:
-        iconName = focused ? "home" : "home-outline";
-        break;
+        return focused ? <HOME_ACTIVE /> : <HOME_INACTIVE />
     }
-    return (
-      <Icon
-        name={iconName}
-        type={IconType.Ionicons}
-        size={size}
-        color={color}
-      />
-    );
   };
   function AuthStack() {
     return (
@@ -82,10 +72,11 @@ const Navigation = () => {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,
-          tabBarIcon: ({ focused, color, size }) =>
-            renderTabIcon(route, focused, color, size),
+          tabBarIcon: ({ focused }) =>
+            renderTabIcon(route, focused),
           tabBarActiveTintColor: palette.primary,
           tabBarInactiveTintColor: "gray",
+          tabBarShowLabel:false,
           tabBarStyle: {
             backgroundColor: isDarkMode ? palette.black : palette.white,
           },
