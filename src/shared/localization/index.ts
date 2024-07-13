@@ -29,7 +29,7 @@ export const translations = new LocalizedStrings({
     recentDefaultDescription: 'By James Wolden',
     popularDefaultTitle: 'Indonesian chicken burger',
     recentTitle: 'Recent recipe',
-    popularTitle: 'Popular Creator',
+    popularTitle: 'Popular creator',
     seeAll: 'See all',
     firstName: 'First name',
     lastName: 'Last name',
@@ -59,6 +59,3 @@ export const translations = new LocalizedStrings({
     loading: "Loading..."
   },
 });
-
-// ? Set the language manually
-// translations.setLanguage("tr");

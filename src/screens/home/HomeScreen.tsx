@@ -11,6 +11,7 @@ import { AuthContext } from "context/AuthContext";
 import { getProfileName } from "utils";
 import TrendingItems from "./components/TrendingItems/TrendingItems";
 import RecentItems from "./components/RecentItems/RecentItems";
+import CreatorsItems from "./components/CreatorsItems/CreatorsItems";
 
 const HomeScreen: React.FC = () => {
   const theme = useTheme();
@@ -45,6 +46,7 @@ const HomeScreen: React.FC = () => {
         {renderSearchBar()}
         <TrendingItems />
         <RecentItems />
+        <CreatorsItems />
       </View>
       </ScrollView>
     </SafeAreaView>
