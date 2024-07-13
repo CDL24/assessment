@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { FlatList, Image, Text, View } from "react-native";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { FlatList, Image, ScrollView, Text, View } from "react-native";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationService from "react-navigation-helpers";
@@ -16,13 +16,24 @@ import { translations } from "shared/localization";
 import { horizontalScale, verticalScale } from "@theme/metrix";
 import SEARCH_ICON from "assets/images/search.svg";
 import ListHeader from "@shared-components/ListHeader/ListHeader";
+import { useCategoryData } from "hooks/useCategory";
+import CategoryItem from "@shared-components/CategoryItem/Header/CategoryItem";
+import { ITEM_HEIGHT } from "@shared-components/CategoryItem/Header/CategoryItemStyle";
+import { Category } from "@services/models";
+
 
 const HomeScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
   const [input, setInput] = useState<string>('');
+  const {categoryData} = useCategoryData();
 
+  useEffect(()=>{
+    
+    console.log('data : ',categoryData)
+    
+  },[])
   const handleItemPress = () => {
     NavigationService.push(SCREENS.DETAIL);
   };
@@ -45,23 +56,31 @@ const HomeScreen: React.FC = () => {
       </View>
     )
   }
+
+  const keyExtractor = (item: { idCategory: string; }) => item.idCategory;
+  const renderItem = useCallback(({ item }: { item: Category }) => {
+    return <CategoryItem cItem={item}/>
+   }, []);
+   const getItemLayout = useCallback((_data: ArrayLike<Category>| null | undefined, index: number) => {
+      const dataItems = _data ?? [];  
+      return {
+          length: ITEM_HEIGHT,
+          offset: ITEM_HEIGHT *  dataItems?.length,
+          index,
+        }; }, [] );
+
   const renderTrendingNowList = () => {
     return (
       <View style={styles.trendingContainer}>
         <ListHeader title={translations.trendingTitle} />
-        {/* <FlatList
+        <FlatList<Category>
           horizontal={true}
           data={categoryData}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <RecipeItem
-              item={item}
-              onPress={() => {
-                navigation.navigate('RecipeDetail');
-              }}
-            />
-          )}
-        /> */}
+          keyExtractor={keyExtractor} 
+          showsHorizontalScrollIndicator={false}
+          getItemLayout={getItemLayout}
+          renderItem={renderItem}
+        />
       </View>
     );
   };
@@ -78,12 +97,14 @@ const HomeScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ScrollView style={{flex:1}}>
       {/* <Header onLeftPress={()=>console.log('back')} onRightPress={()=> console.log('right')}/> */}
-        <View style={{flex: 1, gap: verticalScale(10), marginHorizontal: 16}}>
+        <View style={{flex: 1, gap: verticalScale(10), marginHorizontal: horizontalScale(16)}}>
         <HeaderTitle title="Good afternoon, Alessandra!"/>
         {renderSearchBar()}
         {renderTrendingNowList()}
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

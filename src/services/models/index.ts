@@ -20,3 +20,10 @@ export interface UserObj {
   password: string;
   confirmPassword: string;
 }
+
+export interface Category {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+};
