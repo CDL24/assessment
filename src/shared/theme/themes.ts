@@ -35,7 +35,8 @@ export const palette = {
   orange: "#FFB661",
   startBlack: "rgba(0,0,0,0)", 
   endBlack: "rgba(0,0,0,0.9)",
-  error: '#FF0000'
+  error: '#FF0000',
+  inputTextColor: '#C1C1C1'
 };
 
 export const LightTheme: ExtendedTheme = {
@@ -61,6 +62,9 @@ export const DarkTheme: ExtendedTheme = {
     borderColor: palette.borderColorDark,
     startBlack:  palette.startBlack, 
     endBlack: palette.endBlack,
-    error: palette.error
+    error: palette.error,
+    grey: palette.grey,
+    secondaryGrey: palette.secondaryGrey,
+    inputTextColor: palette.inputTextColor
   },
 };

@@ -24,7 +24,7 @@ export const translations = new LocalizedStrings({
     authorTitle: 'By Niki Samantha',
     locationTitle: 'Bali, Indonesia',
     followTitle: 'Follow',
-    trendingTitle: 'Trending Now',
+    trendingTitle: 'Trending now 🔥',
     recentDefaultTitle: 'Indonesian chicken burger',
     recentDefaultDescription: 'By James Wolden',
     popularDefaultTitle: 'Indonesian chicken burger',

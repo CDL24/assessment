@@ -1,6 +1,8 @@
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { ScreenWidth } from "@freakycoder/react-native-helpers";
 import { ExtendedTheme } from "@react-navigation/native";
+import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
+import fonts from "@fonts";
 
 interface Style {
   container: ViewStyle;
@@ -10,15 +12,20 @@ interface Style {
   header: ViewStyle;
   contentContainer: ViewStyle;
   listContainer: ViewStyle;
-  profilePicImageStyle: ImageStyle;
+  customInput: ViewStyle | TextStyle;
+  searchContainer: ViewStyle;
+  searchIconContainer: ViewStyle;
+  trendingContainer: ViewStyle;
 }
+
+export const ICON_HEIGHT = moderateScale(20)
+export const ICON_WIDTH = moderateScale(20)
 
 export default (theme: ExtendedTheme) => {
   const { colors } = theme;
   return StyleSheet.create<Style>({
     container: {
       flex: 1,
-      alignItems: "center",
       backgroundColor: colors.background,
     },
     titleTextStyle: {
@@ -57,10 +64,30 @@ export default (theme: ExtendedTheme) => {
     listContainer: {
       marginTop: 8,
     },
-    profilePicImageStyle: {
-      height: 50,
-      width: 50,
-      borderRadius: 30,
+    customInput: {
+      flex: 1,
+      backgroundColor: colors.white,
+      borderWidth: 1,
+      borderColor: colors.secondaryGrey,
+      borderRadius: 8,
+      fontFamily: fonts.poppins.regular,
+      fontSize: moderateScale(14),
+      paddingLeft: horizontalScale(36),
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    searchContainer:{
+      flexDirection:'row',
+      alignItems:'center'
+    },
+    searchIconContainer:{
+      position: 'absolute',
+      zIndex: 1,
+      left: horizontalScale(10), 
+      top: verticalScale(12)
+    },
+    trendingContainer: {
+      marginHorizontal: 8
     },
   });
 };

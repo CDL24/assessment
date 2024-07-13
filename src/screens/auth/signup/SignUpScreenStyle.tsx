@@ -2,6 +2,7 @@ import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { ExtendedTheme } from "@react-navigation/native";
 import { moderateScale, verticalScale } from "@theme/metrix";
 import fontSize from "@font-size";
+import fonts from "@fonts";
 
 interface Style {
   container: ViewStyle;
@@ -46,15 +47,15 @@ export default (theme: ExtendedTheme) => {
       flex: 1,
       marginTop: verticalScale(100),
       left: verticalScale(25),
-      //gap: verticalScale(5),
       position: "absolute",
       width: "85%"
     },
     label:{
       color: colors.secondaryWhite,
-      fontSize: fontSize.font18,
+      fontSize: fontSize.font16,
       fontWeight: '600',
-      marginBottom: verticalScale(5)
+      marginBottom: verticalScale(5),
+      fontFamily: fonts.poppins.regular
     },
     btnStyle:{
       marginTop: verticalScale(16)
