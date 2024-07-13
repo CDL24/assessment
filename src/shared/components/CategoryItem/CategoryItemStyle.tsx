@@ -17,6 +17,8 @@ type Style = {
   descriptionContainer: ViewStyle;
   descriptionText: TextStyle;
   containerFull: ViewStyle;
+  categoryImgContainer: ViewStyle;
+  playIconContainer: ViewStyle;
 };
 
 export const ITEM_HEIGHT = verticalScale(180)
@@ -91,6 +93,18 @@ export default (theme: ExtendedTheme) => {
       containerFull: {
         marginRight: horizontalScale(0)
       },
+      categoryImgContainer:{
+        backgroundColor: colors.transperantBlack, 
+        borderRadius: moderateScale(8)
+      },
+      playIconContainer:{
+        position: 'absolute', 
+        alignSelf: 'center', 
+        top: verticalScale(70), 
+        bottom: 0, 
+        left: horizontalScale(120), 
+        right: 0
+      }
     });
   };
   
