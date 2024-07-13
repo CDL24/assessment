@@ -1,6 +1,6 @@
 export const SCREENS = {
   HOME: "Home",
-  SEARCH: "Search",
+  BOOKMARK: "Bookmark",
   NOTIFICATION: "Notification",
   PROFILE: "Profile",
   DETAIL: "Detail",

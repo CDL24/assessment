@@ -8,7 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "@screens/home/HomeScreen";
 import NotificationScreen from "@screens/notification/NotificationScreen";
 import ProfileScreen from "@screens/profile/ProfileScreen";
-import SearchScreen from "@screens/search/SearchScreen";
+import BookmarkScreen from "@screens/bookmark/BookmarkScreen";
 
 /**
  * ? Local & Shared Imports
@@ -75,7 +75,6 @@ const Navigation = () => {
           tabBarIcon: ({ focused }) =>
             renderTabIcon(route, focused),
           tabBarActiveTintColor: palette.primary,
-          tabBarInactiveTintColor: "gray",
           tabBarShowLabel:false,
           tabBarStyle: {
             backgroundColor: isDarkMode ? palette.black : palette.white,
@@ -83,7 +82,7 @@ const Navigation = () => {
         })}
       >
         <Tab.Screen name={SCREENS.HOME} component={HomeScreen} />
-        <Tab.Screen name={SCREENS.SEARCH} component={SearchScreen} />
+        <Tab.Screen name={SCREENS.BOOKMARK} component={BookmarkScreen} />
         <Tab.Screen
           name={SCREENS.NOTIFICATION}
           component={NotificationScreen}

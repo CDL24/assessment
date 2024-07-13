@@ -16,6 +16,7 @@ type Style = {
   titleText: TextStyle;
   descriptionContainer: ViewStyle;
   descriptionText: TextStyle;
+  containerFull: ViewStyle;
 };
 
 export const ITEM_HEIGHT = verticalScale(180)
@@ -86,6 +87,9 @@ export default (theme: ExtendedTheme) => {
         color: colors.lightGrey,
         fontFamily: fonts.poppins.regular,
         fontSize: fontSize.font12
+      },
+      containerFull: {
+        marginRight: horizontalScale(0)
       },
     });
   };

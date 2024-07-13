@@ -11,14 +11,18 @@ import { ITEM_HEIGHT } from "@shared-components/CategoryItem/CategoryItemStyle";
 import { Category } from "@services/models";
 import { END_POINT, KEYS } from "@shared-constants";
 
-const TrendingItems: React.FC = () => {
+type Props = {
+  showTitle?: boolean
+  isHorizontal?: boolean
+}
+const TrendingItems: React.FC<Props> = ({showTitle = true, isHorizontal = true}) => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const {isLoading, data} = useApi(KEYS.API_CATEGORIES, END_POINT.categories);
 
   const keyExtractor = (item: { idCategory: string; }) => item.idCategory;
   const renderItem = useCallback(({ item }: { item: Category }) => {
-    return <CategoryItem cItem={item}/>
+    return <CategoryItem cItem={item} isHorizontal={isHorizontal}/>
    }, []);
    const getItemLayout = useCallback((_data: ArrayLike<Category>| null | undefined, index: number) => {
       const dataItems = _data ?? [];  
@@ -30,19 +34,19 @@ const TrendingItems: React.FC = () => {
 
   return (
     <View style={styles.trendingContainer}>
-        <ListHeader title={translations.trendingTitle} />
+        {showTitle && <ListHeader title={translations.trendingTitle} />}
         { isLoading ? 
           (<View style={styles.loadingContainer}><Text style={styles.loadingText}>{translations.loading}</Text></View>)
           : data?.data?.categories && data?.data?.categories?.length && (<FlatList<Category>
-            horizontal={true}
+            horizontal={isHorizontal}
             data={data?.data?.categories}
             keyExtractor={keyExtractor} 
             showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             getItemLayout={getItemLayout}
             renderItem={renderItem}
         />) }
     </View>
   );
 };
-
 export default React.memo(TrendingItems);

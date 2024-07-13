@@ -10,8 +10,6 @@ interface Style {
   buttonStyle: ViewStyle;
   buttonTextStyle: TextStyle;
   header: ViewStyle;
-  contentContainer: ViewStyle;
-  listContainer: ViewStyle;
   customInput: ViewStyle | TextStyle;
   searchContainer: ViewStyle;
   searchIconContainer: ViewStyle;
@@ -57,13 +55,6 @@ export default (theme: ExtendedTheme) => {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-    },
-    contentContainer: {
-      flex: 1,
-      marginTop: 16,
-    },
-    listContainer: {
-      marginTop: 8,
     },
     customInput: {
       flex: 1,

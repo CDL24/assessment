@@ -15,38 +15,39 @@ import AVATAR_1 from "@assets/images/avatar_1.svg";
 export type CategoryProps = {
     cItem: Category;
     onPress?: () => void;
+    isHorizontal?: boolean
 }
-const CategoryItem: React.FC<CategoryProps> = ({cItem, onPress}) => {
+const CategoryItem: React.FC<CategoryProps> = ({cItem, isHorizontal, onPress}) => {
   const theme = useTheme();
   const { colors } = theme;
     const styles = useMemo(() => createStyles(theme), [theme]);
     return(
-        <TouchableOpacity onPress={onPress} style={styles.container}>
-        <View style={{backgroundColor: 'rgba(0, 0, 0, 0.1)', borderRadius: moderateScale(8)}}>
-        <FastImage
-                style={styles.recipeImage}
-                source={{
-                uri: cItem?.strCategoryThumb,
-                priority: FastImage.priority.normal,
-            }}
-            resizeMode={FastImage.resizeMode.contain}
-        />
-        </View>
-        <View style={styles.rateContainer}>
-            <SMALL_STAR />
-            <Text style={styles.rateText}>4.5</Text>
-        </View>
-      <TouchableOpacity style={styles.favouriteContainer}>
-        <BOOKMARK />
-      </TouchableOpacity>
-      <View style={[styles.bottomContainer, {overflow: 'hidden'}]}>
-        <Text style={styles.titleText} numberOfLines={1} ellipsizeMode="tail">{cItem?.strCategoryDescription}</Text>
-      </View>
-      <View style={styles.descriptionContainer}>
-        <AVATAR_1 />
-        <Text style={styles.descriptionText}>By Niki Samantha</Text>
-      </View>
-    </TouchableOpacity>
+        <TouchableOpacity onPress={onPress} style={isHorizontal ? styles.container : styles.containerFull}>
+            <View style={{backgroundColor: 'rgba(0, 0, 0, 0.1)', borderRadius: moderateScale(8)}}>
+            <FastImage
+                    style={styles.recipeImage}
+                    source={{
+                    uri: cItem?.strCategoryThumb,
+                    priority: FastImage.priority.normal,
+                }}
+                resizeMode={FastImage.resizeMode.contain}
+            />
+            </View>
+            <View style={styles.rateContainer}>
+                <SMALL_STAR />
+                <Text style={styles.rateText}>4.5</Text>
+            </View>
+          <TouchableOpacity style={styles.favouriteContainer}>
+            <BOOKMARK />
+          </TouchableOpacity>
+          <View style={[styles.bottomContainer, {overflow: 'hidden'}]}>
+            <Text style={styles.titleText} numberOfLines={1} ellipsizeMode="tail">{cItem?.strCategoryDescription}</Text>
+          </View>
+          <View style={styles.descriptionContainer}>
+            <AVATAR_1 />
+            <Text style={styles.descriptionText}>By Niki Samantha</Text>
+          </View>
+        </TouchableOpacity>
     )
 }
 
