@@ -3,6 +3,7 @@ import { ScreenWidth } from "@freakycoder/react-native-helpers";
 import { ExtendedTheme } from "@react-navigation/native";
 import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
 import fonts from "@fonts";
+import fontSize from "@font-size";
 
 interface Style {
   container: ViewStyle;
@@ -16,6 +17,8 @@ interface Style {
   searchContainer: ViewStyle;
   searchIconContainer: ViewStyle;
   trendingContainer: ViewStyle;
+  loadingContainer: ViewStyle;
+  loadingText: TextStyle;
 }
 
 export const ICON_HEIGHT = moderateScale(20)
@@ -90,6 +93,14 @@ export default (theme: ExtendedTheme) => {
       marginHorizontal: horizontalScale(8),
       marginTop: verticalScale(8)
     },
+    loadingContainer:{
+      justifyContent: 'center', 
+      alignItems: 'center'
+    },
+    loadingText:{
+      fontSize: fontSize.font18,
+      fontFamily: fonts.poppins.light
+    }
   });
 };
 

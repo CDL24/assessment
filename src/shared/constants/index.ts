@@ -10,4 +10,6 @@ export const SCREENS = {
 };
 export const KEYS = {
   USER: "@User",
+  API_CATEGORIES: "categories",
+  API_RECENT_RECIPIES: "recent_recipies"
 };

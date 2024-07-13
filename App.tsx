@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { LogBox, StatusBar, useColorScheme } from "react-native";
 import "react-native-gesture-handler";
 import SplashScreen from "react-native-splash-screen";
@@ -9,6 +9,9 @@ import SplashScreen from "react-native-splash-screen";
 import Navigation from "./src/navigation";
 import { isAndroid } from "@freakycoder/react-native-helpers";
 import { AuthContextProvider } from "context/AuthContext";
+import {QueryClientProvider, QueryClient} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 LogBox.ignoreAllLogs();
 
@@ -30,7 +33,9 @@ const App = () => {
 
   return (
     <AuthContextProvider>
+      <QueryClientProvider client={queryClient}>
       <Navigation />
+      </QueryClientProvider>
     </AuthContextProvider>
   );
 };

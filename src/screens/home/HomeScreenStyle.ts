@@ -16,6 +16,7 @@ interface Style {
   searchContainer: ViewStyle;
   searchIconContainer: ViewStyle;
   trendingContainer: ViewStyle;
+  subContainer: ViewStyle;
 }
 
 export const ICON_HEIGHT = moderateScale(20)
@@ -90,5 +91,10 @@ export default (theme: ExtendedTheme) => {
       marginHorizontal: horizontalScale(8),
       marginTop: verticalScale(8)
     },
+    subContainer: {
+      flex: 1, 
+      gap: verticalScale(10), 
+      marginHorizontal: horizontalScale(16)
+    }
   });
 };

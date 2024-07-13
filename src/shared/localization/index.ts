@@ -55,7 +55,8 @@ export const translations = new LocalizedStrings({
     tooLong: "Too long !",
     missmatchPassword: 'Password miss match',
     welcomeMsg: "Good afternoon, {0}!",
-    name: "By Niki Samantha" 
+    name: "By Niki Samantha" ,
+    loading: "Loading..."
   },
 });
 

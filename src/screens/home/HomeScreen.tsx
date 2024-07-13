@@ -6,7 +6,6 @@ import { useTheme } from "@react-navigation/native";
 import HeaderTitle from "@shared-components/HeaderTitle/HeaderTitle";
 import InputText from "@shared-components/InputText/InputText";
 import { translations } from "shared/localization";
-import { horizontalScale, verticalScale } from "@theme/metrix";
 import SEARCH_ICON from "assets/images/search.svg";
 import { AuthContext } from "context/AuthContext";
 import { getProfileName } from "utils";
@@ -39,9 +38,9 @@ const HomeScreen: React.FC = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
       {/* <Header onLeftPress={()=>console.log('back')} onRightPress={()=> console.log('right')}/> */}
-        <View style={{flex: 1, gap: verticalScale(10), marginHorizontal: horizontalScale(16)}}>
+        <View style={styles.subContainer}>
         <HeaderTitle title={getProfileName(authData && authData || undefined)}/>
         {renderSearchBar()}
         <TrendingItems />
