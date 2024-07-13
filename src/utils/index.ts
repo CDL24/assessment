@@ -8,9 +8,7 @@ export const capitalizeFirstLetter = (str: string) => {
 
 export const setItem = async (key: string, value: object) => {
   try {
-    console.log("setItem : value ", value);
     const jsonValue = JSON.stringify(value);
-    console.log("setItem : ", jsonValue);
     await AsyncStorage.setItem(key, jsonValue);
   } catch (e: any) {
     // saving error
@@ -20,7 +18,6 @@ export const setItem = async (key: string, value: object) => {
 export const getItem = async (key: string) => {
   try {
     const jsonValue = await AsyncStorage.getItem(key);
-    console.log("getItem : ", jsonValue);
     return jsonValue != null ? await JSON.parse(jsonValue) : null;
   } catch (e) {
     // error reading value
@@ -40,7 +37,7 @@ export const authenticateUser = async (
   authData: AuthData | undefined,
   signIn: (value: AuthData) => void,
 ) => {
-  console.log("authenticateUser.....", authData, userEmail, userPassword);
+  
   if (authData && userEmail && userPassword) {
     const { email, password } = authData;
     if (email === userEmail && password === userPassword) {

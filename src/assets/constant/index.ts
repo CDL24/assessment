@@ -18,3 +18,4 @@ export const NOTIFICATION_INACTIVE = require("@assets/images/notification_inacti
 export const PROFILE_ACTIVE = require("@assets/images/profile_active.svg");
 export const PROFILE_INACTIVE = require("@assets/images/profile_inactive.svg");
 export const NOTIFY = require("@assets/images/notify.svg");
+export const THEME = require("@assets/images/theme.svg");

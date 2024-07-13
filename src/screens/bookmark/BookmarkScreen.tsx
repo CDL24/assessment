@@ -16,7 +16,7 @@ const BookmarkScreen: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.subContainer}>
           <HeaderTitle title={translations.savedRecipe}/>
-          <TabSwitcher />
+          <TabSwitcher tab1={translations.tabVideos} tab2={translations.tabRecipies}/>
           <TrendingItems showTitle={false} isHorizontal={false}/>
       </View>
     </SafeAreaView>

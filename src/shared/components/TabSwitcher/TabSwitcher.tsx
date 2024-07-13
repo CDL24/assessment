@@ -3,7 +3,11 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { useTheme } from "@react-navigation/native";
 import createStyles from "./TabSwitcherStyle";
 
-const TabSwitcher: React.FC = () => {
+type Props = {
+  tab1: string;
+  tab2: string;
+}
+const TabSwitcher: React.FC<Props> = ({tab1, tab2}) => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
 
@@ -19,46 +23,15 @@ const TabSwitcher: React.FC = () => {
         style={[styles.tab, activeTab === 1 ? styles.activeTab : null]}
         onPress={() => handleTabPress(1)}
       >
-        <Text style={activeTab === 1 ? styles.tabTextActive : styles.tabText}>Tab 1</Text>
+        <Text style={activeTab === 1 ? styles.tabTextActive : styles.tabText}>{tab1}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.tab, activeTab === 2 ? styles.activeTab : null]}
         onPress={() => handleTabPress(2)}
       >
-        <Text style={activeTab === 2 ? styles.tabTextActive : styles.tabText}>Tab 2</Text>
+        <Text style={activeTab === 2 ? styles.tabTextActive : styles.tabText}>{tab2}</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginTop: 20,
-//   },
-//   tab: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     paddingVertical: 8,
-//     borderRadius: 8
-//   },
-//   activeTab: {
-//     backgroundColor: 'pink',
-//     borderRadius: 8,
-//   },
-//   tabText: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     color: '#333',
-//   },
-//   tabTextActive: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     color: '#FFF',
-//   },
-// });
-
 export default TabSwitcher;

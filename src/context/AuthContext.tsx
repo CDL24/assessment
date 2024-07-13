@@ -51,7 +51,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderData) => {
       setIsLoggedIn(false);
       setAuthData(undefined);
     }
-    console.log("checkIsLoggedIn...", userData);
     setLoading(false);
   };
   const signOut = async () => {
@@ -60,16 +59,13 @@ export const AuthContextProvider = ({ children }: AuthContextProviderData) => {
     const updatedData = { ...user };
     updatedData.isLoggedIn = false;
     await setItem(KEYS.USER, updatedData);
-    //removeItem(KEYS.USER)
     setAuthData(undefined);
     setIsLoggedIn(false);
     setLoading(false);
   };
 
   return (
-    <AuthContext.Provider
-      value={{ authData, signIn, signOut, guestSignIn, isLoading }}
-    >
+    <AuthContext.Provider value={{ authData, signIn, signOut, guestSignIn, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
