@@ -9,12 +9,12 @@ import { useApi } from "hooks/useApi";
 import CategoryItem from "@shared-components/CategoryItem/CategoryItem";
 import { ITEM_HEIGHT } from "@shared-components/CategoryItem/CategoryItemStyle";
 import { Category } from "@services/models";
-import { KEYS } from "@shared-constants";
+import { END_POINT, KEYS } from "@shared-constants";
 
 const TrendingItems: React.FC = () => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const {isLoading, data} = useApi(KEYS.API_CATEGORIES,"https://www.themealdb.com/api/json/v1/1/categories.php");
+  const {isLoading, data} = useApi(KEYS.API_CATEGORIES, END_POINT.categories);
 
   const keyExtractor = (item: { idCategory: string; }) => item.idCategory;
   const renderItem = useCallback(({ item }: { item: Category }) => {
@@ -45,4 +45,4 @@ const TrendingItems: React.FC = () => {
   );
 };
 
-export default TrendingItems;
+export default React.memo(TrendingItems);

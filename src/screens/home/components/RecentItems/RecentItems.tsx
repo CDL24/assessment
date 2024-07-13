@@ -9,12 +9,12 @@ import { ITEM_HEIGHT } from "@shared-components/CategoryItem/CategoryItemStyle";
 import { Meal } from "@services/models";
 import RecentRecipeItem from "@shared-components/RecentRecipe/RecentRecipe";
 import { useApi } from "hooks/useApi";
-import { KEYS } from "@shared-constants";
+import { END_POINT, KEYS } from "@shared-constants";
 
 const RecentItems: React.FC = () => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const {isLoading, data} = useApi(KEYS.API_RECENT_RECIPIES,"https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast");
+  const {isLoading, data} = useApi(KEYS.API_RECENT_RECIPIES, END_POINT.recent_recipies);
   
   const keyExtractor = (item: { idMeal: string; }) => item.idMeal;
   const renderItem = useCallback(({ item }: { item: Meal }) => {
@@ -45,4 +45,4 @@ const RecentItems: React.FC = () => {
   );
 };
 
-export default RecentItems;
+export default React.memo(RecentItems);

@@ -1,4 +1,3 @@
-// ? Screens
 export const SCREENS = {
   HOME: "Home",
   SEARCH: "Search",
@@ -13,3 +12,8 @@ export const KEYS = {
   API_CATEGORIES: "categories",
   API_RECENT_RECIPIES: "recent_recipies"
 };
+export const END_POINT = {
+  categories: "categories.php",
+  recent_recipies: "filter.php?i=chicken_breast"
+}
+export const BASE_API = `${process.env.BASE_URL}${process.env.API_URL}`
