@@ -30,7 +30,10 @@ const ProfileScreen: React.FC = () => {
     btnTextStyle, 
     nameTextStyle, 
     descTextStyle,
-    divider
+    divider,
+    placeholderContainer,
+    loginBtnStyle,
+    placeHolderTextStyle
   } = styles;
 
   const logOut = () =>{
@@ -51,10 +54,15 @@ const ProfileScreen: React.FC = () => {
   const changeTheme = useCallback(() =>{
     applyTheme(appTheme === APP_THEME.LIGHT && APP_THEME.DARK || APP_THEME.LIGHT)
   },[appTheme])
-  
+
+  const goToLogin = () =>{
+    signOut();
+  }
   return (
     <SafeAreaView style={container}>
-      <View style={subContainer}>
+      {
+        authData && authData?.isLoggedIn ? (
+          <View style={subContainer}>
           <View style={row}>
             <View style={view}><HeaderTitle title={translations.myProfileTitle}/></View>
             <TouchableOpacity style={touchableBtn} onPress={()=> changeTheme()}><THEME /></TouchableOpacity>
@@ -74,6 +82,14 @@ const ProfileScreen: React.FC = () => {
           <TabSwitcher tab1={translations.tabVideos} tab2={translations.tabRecipies}/>
           <TrendingItems showTitle={false} isHorizontal={false}/>
       </View>
+        ) :(
+          <View style={placeholderContainer}>
+            <Text style={placeHolderTextStyle}>{translations.loginPlaceholder}</Text>
+            <Button title={translations.login} buttonStyle={loginBtnStyle} onPress={() => goToLogin()}/>
+          </View>
+        )
+      }
+      
     </SafeAreaView>
   );
 };

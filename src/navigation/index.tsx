@@ -24,14 +24,14 @@ const SignUpScreen = React.lazy(()=> import('@screens/auth/signup/SignUpScreen')
 import { APP_THEME, SCREENS } from "@shared-constants";
 import { DarkTheme, LightTheme, palette } from "@theme/themes";
 import { AuthContext } from "context/AuthContext";
-import HOME_ACTIVE from "assets/images/home_active.svg";
-import HOME_INACTIVE from "assets/images/home_inactive.svg";
-import BOOKMARK_ACTIVE from "assets/images/bookmark_active.svg";
-import BOOKMARK_INACTIVE from "assets/images/bookmark_inactive.svg";
-import NOTIFICATION_ACTIVE from "assets/images/notification_active.svg";
-import NOTIFICATION_INACTIVE from "assets/images/notification_inactive.svg";
-import PROFILE_ACTIVE from "assets/images/profile_active.svg";
-import PROFILE_INACTIVE from "assets/images/profile_inactive.svg";
+import HOME_ACTIVE from "@assets/images/home_active.svg";
+import HOME_INACTIVE from "@assets/images/home_inactive.svg";
+import BOOKMARK_ACTIVE from "@assets/images/bookmark_active.svg";
+import BOOKMARK_INACTIVE from "@assets/images/bookmark_inactive.svg";
+import NOTIFICATION_ACTIVE from "@assets/images/notification_active.svg";
+import NOTIFICATION_INACTIVE from "@assets/images/notification_inactive.svg";
+import PROFILE_ACTIVE from "@assets/images/profile_active.svg";
+import PROFILE_INACTIVE from "@assets/images/profile_inactive.svg";
 
 const Tab = createBottomTabNavigator();
 const AuthStackNavigator = createStackNavigator();
