@@ -1,22 +1,28 @@
 import React, { useContext } from "react";
-import { useColorScheme } from "react-native";
 import { isReadyRef, navigationRef } from "react-navigation-helpers";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "@screens/home/HomeScreen";
-import NotificationScreen from "@screens/notification/NotificationScreen";
-import ProfileScreen from "@screens/profile/ProfileScreen";
-import BookmarkScreen from "@screens/bookmark/BookmarkScreen";
+//const HomeScreen = React.lazy(()=> import('@screens/home/HomeScreen'));
+const NotificationScreen = React.lazy(()=> import('@screens/notification/NotificationScreen'));
+const ProfileScreen = React.lazy(()=> import('@screens/profile/ProfileScreen'));
+const BookmarkScreen = React.lazy(()=> import('@screens/bookmark/BookmarkScreen'));
+//const SignInScreen = React.lazy(()=> import('@screens/auth/signin/SignInScreen'));
+const SignUpScreen = React.lazy(()=> import('@screens/auth/signup/SignUpScreen'));
+
+// import NotificationScreen from "@screens/notification/NotificationScreen";
+// import ProfileScreen from "@screens/profile/ProfileScreen";
+// import BookmarkScreen from "@screens/bookmark/BookmarkScreen";
+ import SignInScreen from "@screens/auth/signin/SignInScreen";
+// import SignUpScreen from "@screens/auth/signup/SignUpScreen";
 
 /**
- * ? Local & Shared Imports
+ * Shared Imports
  */
-import { SCREENS } from "@shared-constants";
+import { APP_THEME, SCREENS } from "@shared-constants";
 import { DarkTheme, LightTheme, palette } from "@theme/themes";
-import SignInScreen from "@screens/auth/signin/SignInScreen";
-import SignUpScreen from "@screens/auth/signup/SignUpScreen";
 import { AuthContext } from "context/AuthContext";
 import HOME_ACTIVE from "assets/images/home_active.svg";
 import HOME_INACTIVE from "assets/images/home_inactive.svg";
@@ -27,17 +33,14 @@ import NOTIFICATION_INACTIVE from "assets/images/notification_inactive.svg";
 import PROFILE_ACTIVE from "assets/images/profile_active.svg";
 import PROFILE_INACTIVE from "assets/images/profile_inactive.svg";
 
-// ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 const AuthStackNavigator = createStackNavigator();
 
 const Navigation = () => {
-  const scheme = useColorScheme();
-  const isDarkMode = scheme === "dark";
-  const { authData } = useContext(AuthContext);
-  console.log("authData:", authData, "isLoggedIn:", authData?.isLoggedIn);
-
+  
+  const { authData, appTheme } = useContext(AuthContext);
+  const isDarkMode = appTheme === APP_THEME.DARK;
+  
   React.useEffect((): any => {
     return () => (isReadyRef.current = false);
   }, []);
@@ -49,7 +52,7 @@ const Navigation = () => {
     switch (route.name) {
       case SCREENS.HOME:
         return focused ? <HOME_ACTIVE /> : <HOME_INACTIVE />
-      case SCREENS.SEARCH:
+      case SCREENS.BOOKMARK:
         return focused ? <BOOKMARK_ACTIVE /> : <BOOKMARK_INACTIVE />
       case SCREENS.NOTIFICATION:
         return focused ? <NOTIFICATION_ACTIVE /> : <NOTIFICATION_INACTIVE />
@@ -91,7 +94,7 @@ const Navigation = () => {
       </Tab.Navigator>
     );
   };
-  console.log("Navigator...Called....", authData, authData?.isLoggedIn);
+  console.log("Navigator...Called....", authData, authData?.isLoggedIn, 'isDarkMode:',isDarkMode, 'appTheme : ',appTheme);
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -103,12 +106,6 @@ const Navigation = () => {
       {authData?.isLoggedIn || authData?.isGuestLoggedIn
         ? HomeStack()
         : AuthStack()}
-      {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name={SCREENS.HOME} component={HomeStack} />
-        <Stack.Screen name={SCREENS.DETAIL}>
-          {(props) => <DetailScreen {...props} />}
-        </Stack.Screen>
-      </Stack.Navigator> */}
     </NavigationContainer>
   );
 };

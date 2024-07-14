@@ -26,11 +26,11 @@ export default (theme: ExtendedTheme) => {
       fontSize: moderateScale(10),
     },
     customInput: {
-      backgroundColor: "#f0f0f0",
+      backgroundColor: colors.inputBg,
       borderWidth: 1,
-      borderColor: "#ddd",
-      borderRadius: 8,
-      padding: 12,
+      borderColor: colors.inputBorder,
+      borderRadius: moderateScale(8),
+      padding: moderateScale(12),
       fontSize: moderateScale(18),
     },
     imageBg:{
@@ -62,7 +62,7 @@ export default (theme: ExtendedTheme) => {
     },
     btnDisableStyle:{
       marginTop: verticalScale(16),
-      backgroundColor: '#A5C9CA'
+      backgroundColor: colors.disableBtn
     },
     error:{
       color: colors.error,

@@ -6,7 +6,7 @@ export const capitalizeFirstLetter = (str: string) => {
   return str && str.length ? str.charAt(0).toUpperCase() + str.slice(1) : str;
 };
 
-export const setItem = async (key: string, value: object) => {
+export const setItem = async (key: string, value: object | string) => {
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(key, jsonValue);

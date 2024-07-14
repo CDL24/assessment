@@ -1,11 +1,8 @@
 import React from "react";
-import { LogBox, StatusBar, useColorScheme } from "react-native";
+import { LogBox, StatusBar, Text, useColorScheme, View } from "react-native";
 import "react-native-gesture-handler";
 import SplashScreen from "react-native-splash-screen";
 
-/**
- * ? Local Imports
- */
 import Navigation from "./src/navigation";
 import { isAndroid } from "@freakycoder/react-native-helpers";
 import { AuthContextProvider } from "context/AuthContext";
@@ -20,6 +17,7 @@ const App = () => {
   const isDarkMode = scheme === "dark";
 
   React.useEffect(() => {
+    SplashScreen.show();
     StatusBar.setBarStyle(isDarkMode ? "light-content" : "dark-content");
     if (isAndroid) {
       StatusBar.setBackgroundColor("rgba(0,0,0,0)");
@@ -34,7 +32,9 @@ const App = () => {
   return (
     <AuthContextProvider>
       <QueryClientProvider client={queryClient}>
-      <Navigation />
+        <React.Suspense fallback={<View style={{backgroundColor: 'pink', flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'black', fontSize: 28}}>Loading...</Text></View>}>
+          <Navigation />
+        </React.Suspense>
       </QueryClientProvider>
     </AuthContextProvider>
   );

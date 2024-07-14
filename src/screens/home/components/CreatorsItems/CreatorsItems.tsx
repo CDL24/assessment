@@ -10,6 +10,7 @@ import { Meal } from "@services/models";
 import { useApi } from "hooks/useApi";
 import { END_POINT, KEYS } from "@shared-constants";
 import Creators from "@shared-components/Creators/Creators";
+import LoadingPlaceholder from "@shared-components/LoadingPlaceholder/LoadingPlaceholder";
 
 const CreatorsItems: React.FC = () => {
   const theme = useTheme();
@@ -32,7 +33,7 @@ const CreatorsItems: React.FC = () => {
     <View style={styles.trendingContainer}>
         <ListHeader title={translations.popularTitle} />
         { isLoading ? 
-          (<View style={styles.loadingContainer}><Text style={styles.loadingText}>{translations.loading}</Text></View>)
+          (<LoadingPlaceholder />)
           : data?.data?.meals && data?.data?.meals?.length && (<FlatList<Meal>
             horizontal={true}
             data={data?.data?.meals}

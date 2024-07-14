@@ -11,14 +11,13 @@ type Props = {
 }
 const Header: React.FC<Props> = ({onLeftPress, onRightPress}) => {
   const theme = useTheme();
-  const { colors } = theme;
     const styles = useMemo(() => createStyles(theme), [theme]);
     return(
         <View style={styles.header}>
-            <TouchableOpacity onPress={onLeftPress}>
+            <TouchableOpacity testID="leftIcon" onPress={onLeftPress}>
                 <BACK_ARROW height={24} width={24} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onRightPress}>
+            <TouchableOpacity testID="rightIcon" onPress={onRightPress}>
                 <MORE_MENU height={24} width={24}/>
             </TouchableOpacity>
         </View>

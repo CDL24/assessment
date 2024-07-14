@@ -17,9 +17,8 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   disabled = false
 }) => {
-  console.log("buton");
+  
   const theme = useTheme();
-  const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   return (

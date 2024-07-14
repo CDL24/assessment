@@ -1,10 +1,10 @@
-import React, { useContext, useMemo } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 import createStyles from "./ProfileScreenStyle";
 import { useTheme } from "@react-navigation/native";
 import { AuthContext } from "context/AuthContext";
 import * as NavigationService from "react-navigation-helpers";
-import { SCREENS } from "@shared-constants";
+import { APP_THEME, SCREENS } from "@shared-constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { translations } from "shared/localization";
 import HeaderTitle from "@shared-components/HeaderTitle/HeaderTitle";
@@ -18,7 +18,7 @@ import TrendingItems from "@screens/home/components/TrendingItems/TrendingItems"
 const ProfileScreen: React.FC = () => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const {signOut, authData} = useContext(AuthContext)
+  const {signOut, authData, applyTheme, appTheme} = useContext(AuthContext)
   const {
     container, 
     subContainer, 
@@ -48,13 +48,16 @@ const ProfileScreen: React.FC = () => {
           }
       ]  
   )}
-
+  const changeTheme = useCallback(() =>{
+    applyTheme(appTheme === APP_THEME.LIGHT && APP_THEME.DARK || APP_THEME.LIGHT)
+  },[appTheme])
+  
   return (
     <SafeAreaView style={container}>
       <View style={subContainer}>
           <View style={row}>
             <View style={view}><HeaderTitle title={translations.myProfileTitle}/></View>
-            <TouchableOpacity style={touchableBtn}><THEME /></TouchableOpacity>
+            <TouchableOpacity style={touchableBtn} onPress={()=> changeTheme()}><THEME /></TouchableOpacity>
             <TouchableOpacity style={touchableBtn} onPress={()=> logOut()}><MORE_MENU /></TouchableOpacity>
           </View>
           <View style={profileContainer}>

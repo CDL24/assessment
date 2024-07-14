@@ -1,6 +1,6 @@
 import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { ExtendedTheme } from "@react-navigation/native";
-import { horizontalScale, verticalScale } from "@theme/metrix";
+import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
 import fontSize from "@font-size";
 import fonts from "@fonts";
 
@@ -33,7 +33,10 @@ export default (theme: ExtendedTheme) => {
     },
     touchableBtn:{
       alignSelf: 'center', 
-      marginHorizontal: horizontalScale(5)
+      marginHorizontal: horizontalScale(5),
+      backgroundColor: colors.cardBackground,
+      borderRadius: horizontalScale(16),
+      padding: moderateScale(3)
     },
     view:{
       flex:1

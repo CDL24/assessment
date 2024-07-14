@@ -16,7 +16,7 @@ const NotificationItem: React.FC = () => {
       <View style={subContainer}>
           <Text style={timeTitle}>{translations.today}</Text>
           {
-            notification.map((item)=><View style={innerContainer}>
+            notification.map((item, index)=><View style={innerContainer} key={index}>
             <NOTIFY />
             <View style={subViewRow}>
               <Text style={notificationTitle}>{item.title}</Text>

@@ -43,7 +43,7 @@ export default (theme: ExtendedTheme) => {
     notificationTitle:{
       fontFamily: fonts.poppins.bold,
       fontSize: fontSize.font12,
-      color: colors.grey
+      color: colors.notificationTitle
     },
     description:{
       fontFamily: fonts.poppins.regular,

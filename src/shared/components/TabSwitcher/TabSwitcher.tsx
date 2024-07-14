@@ -22,12 +22,14 @@ const TabSwitcher: React.FC<Props> = ({tab1, tab2}) => {
       <TouchableOpacity
         style={[styles.tab, activeTab === 1 ? styles.activeTab : null]}
         onPress={() => handleTabPress(1)}
+        testID='Tab1'
       >
         <Text style={activeTab === 1 ? styles.tabTextActive : styles.tabText}>{tab1}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.tab, activeTab === 2 ? styles.activeTab : null]}
         onPress={() => handleTabPress(2)}
+        testID='Tab2'
       >
         <Text style={activeTab === 2 ? styles.tabTextActive : styles.tabText}>{tab2}</Text>
       </TouchableOpacity>

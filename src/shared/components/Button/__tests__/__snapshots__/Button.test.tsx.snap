@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> Component render correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgb(0, 122, 255)",
+      "borderColor": "rgb(0, 122, 255)",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "opacity": 1,
+      "paddingHorizontal": 40,
+      "paddingVertical": 23,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "alignItems": "center",
+          "color": undefined,
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 24,
+          "fontWeight": "600",
+          "justifyContent": "center",
+        },
+        undefined,
+      ]
+    }
+  >
+    Click
+  </Text>
+</View>
+`;

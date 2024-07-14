@@ -1,8 +1,6 @@
 import React, {
-  useCallback,
   useContext,
   useMemo,
-  useState,
 } from "react";
 import * as NavigationService from "react-navigation-helpers";
 import createStyles, { ICON_HEIGHT, ICON_WIDTH } from "./SignInScreenStyle";
@@ -24,25 +22,9 @@ const SignInScreen: React.FC = () => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
-
-  const [username, setUserName] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const { authData, signIn, guestSignIn } = useContext(AuthContext);
-  console.log("SignIn...Called", authData);
-  const handleUsername = useCallback((text: string) => {
-    setUserName(text);
-  }, []);
-  const handlePassword = useCallback((text: string) => {
-    setPassword(text);
-  }, []);
+  const { guestSignIn } = useContext(AuthContext);
+  
   const goToSignUp = async () => {
-    // const response = await authenticateUser(username, password, authData, signIn)
-    // if(response && response.authenticate){
-    //   console.log("Login....Success", username, password);
-    //   NavigationService.reset(SCREENS.HOME)
-    // }else{
-    //   console.log("Login....Failed", username, password);
-    // }
     NavigationService.navigate(SCREENS.SIGNUP);
   };
 
@@ -86,26 +68,9 @@ const SignInScreen: React.FC = () => {
         style={styles.imageBg}
         source={LOGIN_BACKGROUND}
       />
-
-      {/* <CustomText>Username</CustomText>
-        <InputText
-          value={username}
-          onChangeText={handleUsername}
-          placeholder="Enter your text"
-          inputStyle={styles.customInput}
-        />
-        <CustomText>Password</CustomText>
-        <InputText
-          value={password}
-          onChangeText={handlePassword}
-          placeholder="Enter your password"
-          inputStyle={styles.customInput}
-          secureTextEntry={true}
-        /> */}
       {topTitleView()}
       {bottomView()}
     </View>
   );
 };
-
 export default SignInScreen;

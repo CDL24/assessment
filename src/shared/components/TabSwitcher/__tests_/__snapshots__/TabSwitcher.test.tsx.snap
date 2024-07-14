@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TabSwitcher /> Component render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginTop": 32.857142857142854,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "rgb(0, 122, 255)",
+        "borderRadius": 15,
+        "flex": 1,
+        "justifyContent": "center",
+        "opacity": 1,
+        "paddingVertical": 13.142857142857142,
+      }
+    }
+    testID="Tab1"
+  >
+    <Text
+      style={
+        {
+          "color": undefined,
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 12,
+        }
+      }
+    >
+      Tab1
+    </Text>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "borderRadius": 15,
+        "flex": 1,
+        "justifyContent": "center",
+        "opacity": 1,
+        "paddingVertical": 13.142857142857142,
+      }
+    }
+    testID="Tab2"
+  >
+    <Text
+      style={
+        {
+          "color": "rgb(0, 122, 255)",
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 12,
+        }
+      }
+    >
+      Tab2
+    </Text>
+  </View>
+</View>
+`;

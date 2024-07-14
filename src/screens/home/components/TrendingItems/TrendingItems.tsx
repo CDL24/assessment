@@ -10,6 +10,7 @@ import CategoryItem from "@shared-components/CategoryItem/CategoryItem";
 import { ITEM_HEIGHT } from "@shared-components/CategoryItem/CategoryItemStyle";
 import { Category } from "@services/models";
 import { END_POINT, KEYS } from "@shared-constants";
+import LoadingPlaceholder from "@shared-components/LoadingPlaceholder/LoadingPlaceholder";
 
 type Props = {
   showTitle?: boolean
@@ -19,7 +20,7 @@ const TrendingItems: React.FC<Props> = ({showTitle = true, isHorizontal = true})
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const {isLoading, data} = useApi(KEYS.API_CATEGORIES, END_POINT.categories);
-
+  
   const keyExtractor = (item: { idCategory: string; }) => item.idCategory;
   const renderItem = useCallback(({ item }: { item: Category }) => {
     return <CategoryItem cItem={item} isHorizontal={isHorizontal}/>
@@ -36,16 +37,17 @@ const TrendingItems: React.FC<Props> = ({showTitle = true, isHorizontal = true})
     <View style={styles.trendingContainer}>
         {showTitle && <ListHeader title={translations.trendingTitle} />}
         { isLoading ? 
-          (<View style={styles.loadingContainer}><Text style={styles.loadingText}>{translations.loading}</Text></View>)
-          : data?.data?.categories && data?.data?.categories?.length && (<FlatList<Category>
-            horizontal={isHorizontal}
-            data={data?.data?.categories}
-            keyExtractor={keyExtractor} 
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-            getItemLayout={getItemLayout}
-            renderItem={renderItem}
-        />) }
+          (<LoadingPlaceholder />)
+          : data?.data?.categories && data?.data?.categories?.length && (
+              <FlatList<Category>
+                horizontal={isHorizontal}
+                data={data?.data?.categories}
+                keyExtractor={keyExtractor} 
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+                getItemLayout={getItemLayout}
+                renderItem={renderItem}
+          />) }
     </View>
   );
 };

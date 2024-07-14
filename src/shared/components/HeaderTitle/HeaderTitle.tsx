@@ -8,7 +8,6 @@ type Props = {
 }
 const HeaderTitle: React.FC<Props> = ({title}) => {
   const theme = useTheme();
-  const { colors } = theme;
     const styles = useMemo(() => createStyles(theme), [theme]);
     return(
         <View style={styles.header}>

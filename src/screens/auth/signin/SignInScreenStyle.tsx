@@ -8,7 +8,6 @@ export const ICON_WIDTH = moderateScale(20)
 
 interface Style {
   container: ViewStyle;
-  customInput: ViewStyle | TextStyle;
   topText: TextStyle;
   numberOfKText: TextStyle;
   bottomViewLinear: ViewStyle;
@@ -28,14 +27,6 @@ export default (theme: ExtendedTheme) => {
   return StyleSheet.create<Style>({
     container: {
       flex: 1
-    },
-    customInput: {
-      backgroundColor: "#f0f0f0",
-      borderWidth: 1,
-      borderColor: "#ddd",
-      borderRadius: 8,
-      padding: 12,
-      fontSize: 18,
     },
     topText:{
       color: colors.primary, 

@@ -34,6 +34,7 @@ const SignUpScreen: React.FC = () => {
         <View style={styles.subContainer}>
           <Text style={styles.label}>{translations.firstName}</Text>
           <InputText
+            testID="firstName"
             value={values.firstName}
             onChangeText={handleChange('firstName')}
             placeholder={translations.firstNamePlaceHolder}
@@ -43,6 +44,7 @@ const SignUpScreen: React.FC = () => {
           {touched.firstName && errors.firstName && (<Text style={styles.error}>{errors.firstName}</Text>)}
           <Text style={styles.label}>{translations.lastName}</Text>
           <InputText
+            testID="lastName"
             value={values.lastName}
             onChangeText={handleChange('lastName')}
             placeholder={translations.lastNamePlaceHolder}
@@ -52,6 +54,7 @@ const SignUpScreen: React.FC = () => {
           {touched.lastName && errors.lastName && (<Text style={styles.error}>{errors.lastName}</Text>)}
           <Text style={styles.label}>{translations.email}</Text>
           <InputText
+            testID="email"
             value={values.email}
             onChangeText={handleChange('email')}
             placeholder={translations.emailPlaceHolder}
@@ -61,6 +64,7 @@ const SignUpScreen: React.FC = () => {
           {touched.email && errors.email && (<Text style={styles.error}>{errors.email}</Text>)}
           <Text style={styles.label}>{translations.passwordTitle}</Text>
           <InputText
+            testID="password"
             value={values.password}
             onChangeText={handleChange('password')}
             placeholder={translations.passwordPlaceHolder}
@@ -71,6 +75,7 @@ const SignUpScreen: React.FC = () => {
           {touched.password && errors.password && (<Text style={styles.error}>{errors.password}</Text>)}
           <Text style={styles.label}>{translations.confirmPasswordTitle}</Text>
           <InputText
+            testID="confirmPassword"
             value={values.confirmPassword}
             onChangeText={handleChange('confirmPassword')}
             placeholder={translations.confirmPasswordPlaceHolder}

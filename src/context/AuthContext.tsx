@@ -9,6 +9,8 @@ type AuthContextData = {
   signOut(): void;
   guestSignIn(): void;
   isLoading: boolean;
+  applyTheme(value: string): void;
+  appTheme: string;
 };
 
 type AuthContextProviderData = {
@@ -20,9 +22,11 @@ export const AuthContextProvider = ({ children }: AuthContextProviderData) => {
   const [authData, setAuthData] = useState<AuthData | undefined>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [appTheme, setAppTheme] = useState<string>('light');
 
   useEffect(() => {
     checkIsLoggedIn();
+    checkTheme();
   }, []);
 
   const guestSignIn = async () => {
@@ -40,6 +44,16 @@ export const AuthContextProvider = ({ children }: AuthContextProviderData) => {
     setAuthData(user);
     setIsLoggedIn(true);
     setLoading(false);
+  };
+  const checkTheme = async () => {
+    const appTheme: string = await getItem(KEYS.APP_THEME);
+    if (appTheme) {
+      setAppTheme(appTheme);
+    }
+  };
+  const applyTheme = async (theme: string) => {
+    await setItem(KEYS.APP_THEME, theme);
+    setAppTheme(theme);
   };
   const checkIsLoggedIn = async () => {
     setLoading(true);
@@ -65,7 +79,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderData) => {
   };
 
   return (
-    <AuthContext.Provider value={{ authData, signIn, signOut, guestSignIn, isLoading }}>
+    <AuthContext.Provider value={{ authData, signIn, signOut, guestSignIn, isLoading, appTheme, applyTheme }}>
       {children}
     </AuthContext.Provider>
   );

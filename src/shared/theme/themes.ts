@@ -37,9 +37,12 @@ export const palette = {
   endBlack: "rgba(0,0,0,0.9)",
   error: '#FF0000',
   inputTextColor: '#C1C1C1',
-  transperantBlack: "rgba(0, 0, 0, 0.1)",
-  veryLightGrey: "#797979"
-
+  cardBackground: "rgba(0, 0, 0, 0.1)",
+  veryLightGrey: "#797979",
+  notificationTitle: "#303030",
+  inputBg: "#f0f0f0",
+  inputBorder: "#ddd",
+  disableBtn: "#A5C9CA"
 };
 
 export const LightTheme: ExtendedTheme = {
@@ -66,10 +69,14 @@ export const DarkTheme: ExtendedTheme = {
     startBlack:  palette.startBlack, 
     endBlack: palette.endBlack,
     error: palette.error,
-    grey: palette.grey,
+    grey: palette.white,
     secondaryGrey: palette.secondaryGrey,
     inputTextColor: palette.inputTextColor,
-    transperantBlack: palette.transperantBlack,
-    veryLightGrey: palette.veryLightGrey
+    cardBackground: 'rgba(255, 255, 255, 0.6)',
+    veryLightGrey: palette.veryLightGrey,
+    notificationTitle: palette.grey,
+    inputBg: palette.inputBg,
+    inputBorder: palette.inputBorder,
+    disableBtn: palette.disableBtn
   },
 };

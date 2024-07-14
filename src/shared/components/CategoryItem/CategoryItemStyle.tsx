@@ -94,7 +94,7 @@ export default (theme: ExtendedTheme) => {
         marginRight: horizontalScale(0)
       },
       categoryImgContainer:{
-        backgroundColor: colors.transperantBlack, 
+        backgroundColor: colors.cardBackground, 
         borderRadius: moderateScale(8)
       },
       playIconContainer:{
