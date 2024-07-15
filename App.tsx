@@ -1,5 +1,5 @@
 import React from "react";
-import { LogBox, StatusBar, Text, useColorScheme, View } from "react-native";
+import { LogBox, StatusBar, useColorScheme } from "react-native";
 import "react-native-gesture-handler";
 import SplashScreen from "react-native-splash-screen";
 
@@ -9,6 +9,7 @@ import { AuthContextProvider } from "context/AuthContext";
 import {QueryClientProvider, QueryClient} from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { store } from "redux/store";
+import LoadingPlaceholder from "@shared-components/LoadingPlaceholder/LoadingPlaceholder";
 
 const queryClient = new QueryClient();
 
@@ -35,7 +36,7 @@ const App = () => {
     <AuthContextProvider>
       <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <React.Suspense fallback={<View style={{backgroundColor: 'pink', flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'black', fontSize: 28}}>Loading...</Text></View>}>
+        <React.Suspense fallback={<LoadingPlaceholder />}>
           <Navigation />
         </React.Suspense>
       </QueryClientProvider>
