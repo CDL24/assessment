@@ -7,6 +7,8 @@ import Navigation from "./src/navigation";
 import { isAndroid } from "@freakycoder/react-native-helpers";
 import { AuthContextProvider } from "context/AuthContext";
 import {QueryClientProvider, QueryClient} from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import { store } from "redux/store";
 
 const queryClient = new QueryClient();
 
@@ -31,11 +33,13 @@ const App = () => {
 
   return (
     <AuthContextProvider>
+      <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <React.Suspense fallback={<View style={{backgroundColor: 'pink', flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'black', fontSize: 28}}>Loading...</Text></View>}>
           <Navigation />
         </React.Suspense>
       </QueryClientProvider>
+      </Provider>
     </AuthContextProvider>
   );
 };

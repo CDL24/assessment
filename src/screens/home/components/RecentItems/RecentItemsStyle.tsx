@@ -1,21 +1,10 @@
-import { StyleSheet, TextStyle, ViewStyle } from "react-native";
-import { ScreenWidth } from "@freakycoder/react-native-helpers";
+import { StyleSheet, ViewStyle } from "react-native";
 import { ExtendedTheme } from "@react-navigation/native";
 import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
-import fonts from "@fonts";
-import fontSize from "@font-size";
 
 interface Style {
   container: ViewStyle;
-  titleTextStyle: TextStyle;
-  buttonStyle: ViewStyle;
-  buttonTextStyle: TextStyle;
-  header: ViewStyle;
   contentContainer: ViewStyle;
-  listContainer: ViewStyle;
-  customInput: ViewStyle | TextStyle;
-  searchContainer: ViewStyle;
-  searchIconContainer: ViewStyle;
   trendingContainer: ViewStyle;
 }
 
@@ -29,63 +18,9 @@ export default (theme: ExtendedTheme) => {
       flex: 1,
       backgroundColor: colors.background,
     },
-    titleTextStyle: {
-      fontSize: fontSize.font32,
-    },
-    buttonStyle: {
-      height: verticalScale(45),
-      width: ScreenWidth * 0.9,
-      marginTop: verticalScale(32),
-      borderRadius: moderateScale(12),
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: colors.primary,
-      shadowRadius: 5,
-      shadowOpacity: 0.7,
-      shadowColor: colors.shadow,
-      shadowOffset: {
-        width: 0,
-        height: 3,
-      },
-    },
-    buttonTextStyle: {
-      color: colors.white,
-      fontWeight: "700",
-    },
-    header: {
-      width: ScreenWidth * 0.9,
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-    },
     contentContainer: {
       flex: 1,
       marginTop: verticalScale(16),
-    },
-    listContainer: {
-      marginTop: verticalScale(8),
-    },
-    customInput: {
-      flex: 1,
-      backgroundColor: colors.white,
-      borderWidth: 1,
-      borderColor: colors.secondaryGrey,
-      borderRadius: moderateScale(8),
-      fontFamily: fonts.poppins.regular,
-      fontSize: moderateScale(14),
-      paddingLeft: horizontalScale(36),
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    searchContainer:{
-      flexDirection:'row',
-      alignItems:'center'
-    },
-    searchIconContainer:{
-      position: 'absolute',
-      zIndex: 1,
-      left: horizontalScale(10), 
-      top: verticalScale(12)
     },
     trendingContainer: {
       marginHorizontal: horizontalScale(8),

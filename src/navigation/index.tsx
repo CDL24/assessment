@@ -5,18 +5,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "@screens/home/HomeScreen";
-//const HomeScreen = React.lazy(()=> import('@screens/home/HomeScreen'));
+import SignInScreen from "@screens/auth/signin/SignInScreen";
+//Lazy loading components
 const NotificationScreen = React.lazy(()=> import('@screens/notification/NotificationScreen'));
 const ProfileScreen = React.lazy(()=> import('@screens/profile/ProfileScreen'));
 const BookmarkScreen = React.lazy(()=> import('@screens/bookmark/BookmarkScreen'));
-//const SignInScreen = React.lazy(()=> import('@screens/auth/signin/SignInScreen'));
 const SignUpScreen = React.lazy(()=> import('@screens/auth/signup/SignUpScreen'));
-
-// import NotificationScreen from "@screens/notification/NotificationScreen";
-// import ProfileScreen from "@screens/profile/ProfileScreen";
-// import BookmarkScreen from "@screens/bookmark/BookmarkScreen";
- import SignInScreen from "@screens/auth/signin/SignInScreen";
-// import SignUpScreen from "@screens/auth/signup/SignUpScreen";
 
 /**
  * Shared Imports
@@ -94,7 +88,7 @@ const Navigation = () => {
       </Tab.Navigator>
     );
   };
-  console.log("Navigator...Called....", authData, authData?.isLoggedIn, 'isDarkMode:',isDarkMode, 'appTheme : ',appTheme);
+  
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -109,5 +103,4 @@ const Navigation = () => {
     </NavigationContainer>
   );
 };
-
 export default Navigation;

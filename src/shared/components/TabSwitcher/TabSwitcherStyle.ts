@@ -19,7 +19,8 @@ export default (theme: ExtendedTheme) => {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: verticalScale(20),
+      marginTop: verticalScale(16),
+      marginBottom: verticalScale(10)
     },
     tab: {
       flex: 1,

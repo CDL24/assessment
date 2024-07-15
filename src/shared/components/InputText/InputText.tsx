@@ -4,7 +4,7 @@ import createStyles from "./InputTextStyle";
 import { useTheme } from "@react-navigation/native";
 
 interface InputTextProps extends TextInputProps {
-  inputStyle?: TextInputProps["style"]; // To override default input style
+  inputStyle?: TextInputProps["style"];
 }
 
 const InputText: React.FC<InputTextProps> = ({ inputStyle, ...props }) => {

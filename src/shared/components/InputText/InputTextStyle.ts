@@ -1,7 +1,7 @@
 import { StyleSheet, TextStyle } from "react-native";
 import { ExtendedTheme } from "@react-navigation/native";
-import fonts from "@fonts";
 import fontSize from "@font-size";
+import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
 
 interface Style {
   input: TextStyle;
@@ -12,13 +12,12 @@ export default (theme: ExtendedTheme) => {
   return StyleSheet.create<Style>({
     input: {
       height: "auto",
-      borderColor: "#ddd",
+      borderColor: colors.inputBorder,
       borderWidth: 1,
-      borderRadius: 5,
-      paddingHorizontal: 10,
-      marginBottom: 10,
+      borderRadius: moderateScale(5),
+      paddingHorizontal: horizontalScale(10),
+      marginBottom: verticalScale(10),
       fontSize: fontSize.font16,
-      color: "#333",
     },
   });
 };

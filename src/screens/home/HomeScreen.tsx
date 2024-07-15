@@ -20,7 +20,6 @@ const HomeScreen: React.FC = () => {
   const {authData} = useContext(AuthContext);
 
   const handleSearch = (text: string) => {
-    console.log(text)
     setInput(text)
   }
   const renderSearchBar = () =>{
@@ -32,7 +31,6 @@ const HomeScreen: React.FC = () => {
             onChangeText={handleSearch}
             placeholder={translations.searchRecipes}
             inputStyle={styles.customInput}
-            inlineImageLeft=""
           />
       </View>
     )
@@ -40,7 +38,6 @@ const HomeScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-      {/* <Header onLeftPress={()=>console.log('back')} onRightPress={()=> console.log('right')}/> */}
         <View style={styles.subContainer}>
         <HeaderTitle title={getProfileName(authData && authData || undefined)}/>
         {renderSearchBar()}

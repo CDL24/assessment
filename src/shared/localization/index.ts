@@ -69,6 +69,8 @@ export const translations = new LocalizedStrings({
     bio: "Hello world I’m {0}, I’m from Italy 🇮🇹 I love cooking so much!",
     editProfile: "Edit Profile",
     loginPlaceholder: "Please login to manage profile",
-    login: "Login"
+    loginPlaceholderBookmark: "Please login to bookmark items",
+    login: "Login",
+    noSavedItems: "No saved items..."
   },
 });

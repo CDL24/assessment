@@ -14,6 +14,7 @@ import AVATAR_2 from "assets/images/avatar_2.svg";
 import Button from "@shared-components/Button/Button";
 import TabSwitcher from "@shared-components/TabSwitcher/TabSwitcher";
 import TrendingItems from "@screens/home/components/TrendingItems/TrendingItems";
+import LoginPlaceHolder from "@shared-components/LoginPlaceHolder/LoginPlaceHolder";
 
 const ProfileScreen: React.FC = () => {
   const theme = useTheme();
@@ -30,10 +31,7 @@ const ProfileScreen: React.FC = () => {
     btnTextStyle, 
     nameTextStyle, 
     descTextStyle,
-    divider,
-    placeholderContainer,
-    loginBtnStyle,
-    placeHolderTextStyle
+    divider
   } = styles;
 
   const logOut = () =>{
@@ -55,9 +53,6 @@ const ProfileScreen: React.FC = () => {
     applyTheme(appTheme === APP_THEME.LIGHT && APP_THEME.DARK || APP_THEME.LIGHT)
   },[appTheme])
 
-  const goToLogin = () =>{
-    signOut();
-  }
   return (
     <SafeAreaView style={container}>
       {
@@ -83,10 +78,7 @@ const ProfileScreen: React.FC = () => {
           <TrendingItems showTitle={false} isHorizontal={false}/>
       </View>
         ) :(
-          <View style={placeholderContainer}>
-            <Text style={placeHolderTextStyle}>{translations.loginPlaceholder}</Text>
-            <Button title={translations.login} buttonStyle={loginBtnStyle} onPress={() => goToLogin()}/>
-          </View>
+          <LoginPlaceHolder message={translations.loginPlaceholder}/>
         )
       }
       

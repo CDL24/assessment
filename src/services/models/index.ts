@@ -26,6 +26,7 @@ export interface Category {
   strCategory: string;
   strCategoryThumb: string;
   strCategoryDescription: string;
+  isBookmarked?: boolean
 };
 
 export interface Meal {

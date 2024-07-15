@@ -4,8 +4,8 @@ import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
 
 interface Style {
   container: ViewStyle;
-  contentContainer: ViewStyle;
   trendingContainer: ViewStyle;
+  containerStyle: ViewStyle;
 }
 
 export const ICON_HEIGHT = moderateScale(20)
@@ -18,13 +18,13 @@ export default (theme: ExtendedTheme) => {
       flex: 1,
       backgroundColor: colors.background,
     },
-    contentContainer: {
-      flex: 1,
-      marginTop: verticalScale(16),
-    },
     trendingContainer: {
+      flex:1,
       marginHorizontal: horizontalScale(8),
       marginTop: verticalScale(8)
+    },
+    containerStyle:{
+      marginTop: verticalScale(16)
     }
   });
 };

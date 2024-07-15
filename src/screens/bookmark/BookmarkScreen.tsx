@@ -5,8 +5,7 @@ import { useTheme } from "@react-navigation/native";
 import HeaderTitle from "@shared-components/HeaderTitle/HeaderTitle";
 import { translations } from "shared/localization";
 import { SafeAreaView } from "react-native-safe-area-context";
-import TabSwitcher from "@shared-components/TabSwitcher/TabSwitcher";
-import TrendingItems from "@screens/home/components/TrendingItems/TrendingItems";
+import BookmarkItems from "@screens/home/components/BookmarkItems/BookmarkItems";
 
 const BookmarkScreen: React.FC = () => {
   const theme = useTheme();
@@ -15,9 +14,8 @@ const BookmarkScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.subContainer}>
-          <HeaderTitle title={translations.savedRecipe}/>
-          <TabSwitcher tab1={translations.tabVideos} tab2={translations.tabRecipies}/>
-          <TrendingItems showTitle={false} isHorizontal={false}/>
+        <HeaderTitle title={translations.savedRecipe}/>
+          <BookmarkItems />
       </View>
     </SafeAreaView>
   );

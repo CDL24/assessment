@@ -5,32 +5,49 @@ import { translations } from "shared/localization";
 export const capitalizeFirstLetter = (str: string) => {
   return str && str.length ? str.charAt(0).toUpperCase() + str.slice(1) : str;
 };
-
+/**
+ * Save item in DB
+ * @param key 
+ */
 export const setItem = async (key: string, value: object | string) => {
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(key, jsonValue);
   } catch (e: any) {
-    // saving error
     console.log("DB Error", e);
   }
 };
+/**
+ * Get item from DB
+ * @param key 
+ */
 export const getItem = async (key: string) => {
   try {
     const jsonValue = await AsyncStorage.getItem(key);
     return jsonValue != null ? await JSON.parse(jsonValue) : null;
-  } catch (e) {
-    // error reading value
+  } catch (e: any) {
     console.log("DB Error", e);
   }
 };
+/**
+ * Remove item from DB
+ * @param key 
+ */
 export const removeItem = async (key: string) => {
   try {
     await AsyncStorage.removeItem(key);
-  } catch (e) {
+  } catch (e: any) {
     console.log("DB Error", e);
   }
 };
+/**
+ * Authenticating User
+ * @param userEmail 
+ * @param userPassword 
+ * @param authData 
+ * @param signIn 
+ * @returns 
+ */
 export const authenticateUser = async (
   userEmail: string,
   userPassword: string,
@@ -66,7 +83,11 @@ export const doSignUp = (values: UserObj, signIn: (value: AuthData) => void) => 
   };
  signIn(user);
 };
-
+/**
+ * return full profile name
+ * @param authData 
+ * @returns 
+ */
 export const getProfileName = (authData: AuthData | undefined) : string =>{
   let welcomeString = ''
   if(authData && authData.isGuestLoggedIn) welcomeString = translations.formatString(translations.welcomeMsg, 'Guest').toString()

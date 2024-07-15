@@ -3,7 +3,6 @@ import { ExtendedTheme } from "@react-navigation/native";
 import { horizontalScale, moderateScale, verticalScale } from "@theme/metrix";
 import fontSize from "@font-size";
 import fonts from "@fonts";
-import { ScreenWidth } from "@freakycoder/react-native-helpers";
 
 interface Style {
   container: ViewStyle;
@@ -17,9 +16,6 @@ interface Style {
   nameTextStyle: TextStyle;
   descTextStyle: TextStyle;
   divider: ViewStyle;
-  placeholderContainer: ViewStyle;
-  loginBtnStyle: ViewStyle;
-  placeHolderTextStyle: TextStyle;
 }
 
 export default (theme: ExtendedTheme) => {
@@ -79,21 +75,6 @@ export default (theme: ExtendedTheme) => {
       backgroundColor: colors.secondaryGrey, 
       height: 1, 
       marginTop: verticalScale(10)
-    },
-    placeholderContainer: {
-      flex: 1, 
-      gap: verticalScale(16), 
-      marginHorizontal: horizontalScale(16),
-      marginVertical: verticalScale(10),
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    loginBtnStyle:{
-      width: ScreenWidth/2
-    },
-    placeHolderTextStyle:{
-      fontFamily: fonts.poppins.regular,
-      fontSize: fontSize.font18
     }
   });
 };

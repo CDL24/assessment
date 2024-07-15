@@ -1,6 +1,6 @@
 
 import React, { useCallback, useMemo } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import createStyles, {  } from "./CreatorsItemsStyle";
 import { useTheme } from "@react-navigation/native";
 import { translations } from "shared/localization";

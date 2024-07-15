@@ -1,6 +1,6 @@
 
 import React, { useCallback, useMemo } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import createStyles, {  } from "./TrendingItemsStyle";
 import { useTheme } from "@react-navigation/native";
 import { translations } from "shared/localization";
@@ -11,6 +11,8 @@ import { ITEM_HEIGHT } from "@shared-components/CategoryItem/CategoryItemStyle";
 import { Category } from "@services/models";
 import { END_POINT, KEYS } from "@shared-constants";
 import LoadingPlaceholder from "@shared-components/LoadingPlaceholder/LoadingPlaceholder";
+import { useAppDispatch } from "hooks";
+import { addBookmark } from "redux/slices/bookmark";
 
 type Props = {
   showTitle?: boolean
@@ -20,10 +22,13 @@ const TrendingItems: React.FC<Props> = ({showTitle = true, isHorizontal = true})
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const {isLoading, data} = useApi(KEYS.API_CATEGORIES, END_POINT.categories);
+  const dispatch = useAppDispatch();
   
   const keyExtractor = (item: { idCategory: string; }) => item.idCategory;
   const renderItem = useCallback(({ item }: { item: Category }) => {
-    return <CategoryItem cItem={item} isHorizontal={isHorizontal}/>
+    return <CategoryItem cItem={item} isHorizontal={isHorizontal} onBookmark={()=> {
+      dispatch(addBookmark(item))
+    }}/>
    }, []);
    const getItemLayout = useCallback((_data: ArrayLike<Category>| null | undefined, index: number) => {
       const dataItems = _data ?? [];  
