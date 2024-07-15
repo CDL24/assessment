@@ -36,6 +36,9 @@ User can also explore few features of application as a guest without signin.
 # redux-toolkit
 - Use redux toolkit for managing states of bookmark items. In redux folder there is store and slice is created.
 
+# Walthrough
+- Application waltkthrough video uploaded in video folder
+  
 # Test Cases
 - Implemented basic test cases for few components like Button, Signup, TabSwitcher.
 
